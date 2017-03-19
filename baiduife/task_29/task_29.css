@@ -1,0 +1,51 @@
+body{
+    font:16px "微软雅黑";
+}
+#form1{
+    display: flex;
+    flex-wrap: wrap;
+    width:1000px;
+    height: 400px;
+    align-content: space-around;
+
+}
+.box{
+    display: flex;
+    justify-content: flex-end;
+    flex-basis: 100%;
+    flex-wrap: wrap;
+}
+.item{
+    display: flex;
+    font:16px "微软雅黑";
+    flex-basis: 100%;
+    font-weight: bold;
+    justify-content: flex-end;
+}
+.tip1, .tip2, .tip3, .tip4, .tip5{
+    justify-content: flex-start;
+    height: 15px;
+    width: 380px;
+}
+input[type="text"]{
+    margin-left: 10px;
+    height:30px;
+    border-radius: 3px;
+    border:1px solid darkgray ;
+}
+input[type="password"]{
+    margin-left: 10px;
+    height:30px;
+    border-radius: 3px;
+    border:1px solid darkgray ;
+}
+input[type="submit"]{
+    background-color: #2B81AF;
+    color: white;
+    width:80px;
+    height: 30px;
+    outline: 0;
+    border:0;
+    border-radius: 3px;
+    cursor: pointer;
+}
