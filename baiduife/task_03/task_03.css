@@ -1,0 +1,79 @@
+body{
+    padding:20px;
+}
+#box1{
+    position: relative;
+    min-width:600px;
+    padding:20px;
+    background-color: #eeeeee;
+    border: 1px solid #999;
+    margin:0 auto;
+}
+#logo{
+
+
+    float: left;
+    padding:20px;
+    width:160px;
+    background-color: white;
+    height: 90px;
+    border:1px solid #999999;
+}
+#logo img{
+    position: relative;
+    float: left;
+}
+#logo p{
+    position: relative;
+    left:15px;
+
+    font-family: "Calibri Light";
+    font-size:20px;
+    font-weight: 500;
+}
+#content{
+    position: absolute;
+    left:240px;
+    right:160px;
+    padding:20px;
+    line-height: 1.2em;
+    border:1px solid #999999;
+    background-color: white;
+}
+#personlogo{
+    width:120px;
+    float:right;
+    background-color: white;
+
+
+}
+.clearfloat:after{
+    display: block;
+    clear:both;
+    content: "";
+    visibility: hidden;
+    height: 0;
+}
+
+
+#personlogo div{
+    display:block;
+    position: relative;
+
+    width:80px;
+    height:80px;
+    font-weight:bold ;
+    font-size: 15px;
+    border:1px solid #999999;
+    margin:20px;
+    text-align: center;
+    background-color: #aaaaaa;
+    vertical-align: middle;
+}
+#personlogo div p {
+   margin:auto;
+    top:0;
+    bottom: 0;
+    position: absolute;
+    height:30px;
+}
