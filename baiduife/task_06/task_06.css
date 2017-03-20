@@ -45,7 +45,7 @@ body{
     padding-bottom: 2px;
 }
 #picture {
-    background-image: url('/fuzhengsong/images/星空.jpg');
+    background-image: url('星空.jpg');
     background-size: 641px 301px;
     width:641px;
     height: 301px;
@@ -215,7 +215,7 @@ body{
 #part5 {
     width:458px;
     height:275px;
-    background-image: url('/fuzhengsong/images/sun.jpg');
+    background-image: url('sun.jpg');
     background-size:458px 275px;
     position: absolute;
     top:0;
