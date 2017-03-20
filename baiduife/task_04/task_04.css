@@ -1,0 +1,29 @@
+body{
+    margin:0;
+}
+#box1{
+    background-color: #ccc;
+    height:200px;
+    width:400px;
+    position: absolute;
+    top:50%;
+    margin-top: -100px;
+    left:50%;
+    margin-left: -200px;
+}
+#lefttop{
+    height: 50px;
+    width:50px;
+    border-radius: 0 0 50px 0;
+    position: absolute;
+    background-color: yellow;
+}
+#rightbottom{
+    height: 50px;
+    width:50px;
+    border-radius: 50px 0 0px 0;
+    position: absolute;
+    background-color: yellow;
+    bottom:0;
+    right: 0;
+}
