@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            background-color: red;
+            color:white;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            display: inline-block;
+            margin:5px;
+            cursor: pointer;
+            transition: background-color 0.4s ease-in-out;
+            min-width: 30px;
+        }
+        .box:hover{
+            background-color: #973634;
+        }
+        .select{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+<form>
+    <textarea name="textIn" rows="8"></textarea>
+    <input type="button" name="left-in" value="左侧进">
+    <input type="button" name="left-out" value="左侧出">
+    <input type="button" name="right-in" value="右侧进">
+    <input type="button" name="right-out" value="右侧出">
+    <input type="button" name="search" value="查找">
+    <input type="text" name="searchValue" >
+
+</form>
+<div id="blockArea"></div>
+<script src="task_20.js" type="text/javascript"></script>
+</body>
+</html>
