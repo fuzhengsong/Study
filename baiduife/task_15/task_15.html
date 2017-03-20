@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="source">
+    <li>北京空气质量：<b>90</b></li>
+    <li>上海空气质量：<b>70</b></li>
+    <li>天津空气质量：<b>80</b></li>
+    <li>广州空气质量：<b>50</b></li>
+    <li>深圳空气质量：<b>40</b></li>
+    <li>福州空气质量：<b>32</b></li>
+    <li>成都空气质量：<b>90</b></li>
+</ul>
+
+<ul id="resort">
+</ul>
+<button id="sort-btn">排序</button>
+<script src="\fuzhengsong\jquery\jquery-3.1.1.js"></script>
+<script>
+    var chineseNumbers=["一","二","三","四","五","六","七","八","九","十"];
+    var constr;
+    var ary=new Array();
+    var ary1=new Array();
+    var nodelist=document.getElementById("source").childNodes;      //获取ul的子元素的集合，注意：在子元素中，因为li的换行，会有空的子元素
+    for(var i=0;i<nodelist.length;i++)                          //使用循环将子元素推入新的数组中
+    if(nodelist[i].nodeType==1){                                //判断是否是element类型，排除空子元素。
+      var  txt=nodelist[i].firstChild.nodeValue;                //获取li元素的第一个子元素的值（...空气质量 文本节点）
+      var nodelit=nodelist[i].childNodes[1].firstChild.nodeValue;//获取第二个子元素，方法：childNode[1]，也就是<b>元素，再对其第一个子                                                                   元素也就是数字使用nodevalue获取其值。
+
+        ary.push(txt,nodelit);
+        ary1.push(ary);
+        ary=[];
+    }
+    ary1.sort(function (a,b) {
+        return b[1]-a[1];
+    }).forEach(function (item,index) {
+        constr+="<li>第"+chineseNumbers[index]+"名："+item[0]+" "+"<b>"+item[1]+"</b>";
+    });
+    $(function () {
+        $("button").click(function () {
+            document.getElementById("resort").innerHTML=constr;
+        })
+
+    })
+
+</script>
+</body>
+</html>
