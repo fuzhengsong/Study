@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task_17</title>
+    <link href="\fuzhengsong\CSS\task_17.css" rel="stylesheet">
+</head>
+<body>
+<fieldset>
+    <legend>各个城市的空气质量指数</legend>
+    <div id="control-ui">
+        <b>请选择日期粒度：</b>
+    <div class="radio-hidden">
+        <input name="gra-time" value="日" type="radio" >  日
+        <input name="gra-time" value="周" type="radio">  周
+        <input name="gra-time" value="月" type="radio">  月
+
+        <div class="radio-hover">
+        <span class="select-1"></span>
+        <span class="select-2"></span>
+        <span class="select-3"></span>
+        </div>
+        </div></div>
+        <b>请选择查看的城市：</b>
+    <select id="city-select">
+        <option>请选择城市</option>
+        <option>北京</option>
+        <option>上海</option>
+        <option>广州</option>
+        <option>深圳</option>
+        <option>成都</option>
+        <option>西安</option>
+        <option>福州</option>
+        <option>厦门</option>
+        <option>沈阳</option>
+    </select>
+</fieldset>
+
+<div class="aqi-chart-wrap">
+</div>
+<div id="text"></div>
+<span id="info"></span>
+<script src="\fuzhengsong\jquery\jquery-3.1.1.js" type="text/javascript"></script>
+<script src="task_17.js"></script>
+</body>
+</html>
