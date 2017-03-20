@@ -1,0 +1,786 @@
+*{
+    padding: 0;
+    margin:0;
+}
+#container{
+    width:100%;
+    min-width: 1280px;
+    font-family: "微软雅黑";
+}
+header{
+    height:60px;
+    width:100%;
+    font-size: 0;               /*font-size为0 解决了inline-block的空隙问题*/
+    position: relative;
+
+}
+header #header-left{
+    height: 60px;
+    width:10%;
+    position: relative;
+    background:url('/fuzhengsong/images/task07/icon-1.png') no-repeat left;
+    line-height: 60px;          /*line-height与height相同使得单行文字的居中对齐。*/
+    background-size: 16% 50%;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+                                     /*25 26 行代码设置左侧logo区域为行内块元素且居中 否则后面的导航inline-block会向下偏移。为什么会向下                                     偏移呢？这里有个基线的概念，基线就是字母‘x’的下边缘，也可以理解为文字的下边缘，vertical-middle垂直居                                     中对齐是在基线的基础上加上1/2个 ‘x’的距离，该例中默认情况下‘新世界’文字的底部和‘首页’‘登录’等文字的                                       底部对齐，因为文字大小的不同，且行高，高度都为60px（意味着在自己的块中是居中的），而文字的底部又需                                          要对齐，那么文字较小的需要向下偏移一定的距离来使得底部对齐。这里可以修改行高的值来进行调整。也可                                            以使得行内元素块全部进行垂直居中：vertical-align为middle来保持对齐*/
+    left:7%;
+}
+header #header-left h1{
+    font-size: 24px;
+}
+header #header-right{
+    height: 60px;
+    left:40%;
+    width: 30%;
+    position: relative;
+    display: inline-block;
+    /*line-height: 76px;                          修改了导航中文字的行高值来修正偏移*/
+
+    line-height: 60px;
+    vertical-align: middle;
+}
+header #header-right ul{
+    list-style: none;
+    width:100%;
+}
+header #header-right ul li{
+    text-align: center;
+    display: inline-block;
+    font:14px 微软雅黑;
+    transition: color 0.4s ease-in-out;
+    cursor: pointer;
+    width:20%;
+    /*  vertical-align: 5px;                             li标签中的文字相对基线向上偏移5px;*/
+}
+header #header-right ul li:hover{
+    color:#FF1493;
+}
+header #header-right .move{
+    position:absolute ;
+    left:0;
+    top:56px;
+    width:20%;
+    border-top:4px solid #FF1493;
+    transition: left 0.4s ease-in-out;
+}
+/*nth-child（1） 表示 作为其父元素的第一个子元素的li，:hover~伪类表示鼠标选中的元素，这里的关键：.move必须为ul的子元素，否则该选择器 header #header-right ul li:nth-child(1):hover~.move{}无效*/
+header #header-right ul li:nth-child(1):hover~.move{
+    left:0;
+}
+header #header-right ul li:nth-child(2):hover~.move{
+    left:20%;
+}
+header #header-right ul li:nth-child(3):hover~.move{
+    left:40%;
+}
+header #header-right ul li:nth-child(4):hover~.move{
+    left:60%;
+}
+header #header-right ul li:nth-child(5):hover~.move{
+    left:80%;
+}
+header #login{
+    background:url('/fuzhengsong/images/task07/logo2.jpg') no-repeat left;
+    background-size: 25px  25px;
+    position: relative;
+    left:50%;
+    height:60px;
+    width:8%;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    /*font-size: 40px;  字体的大小和行高设置为1:1.5才可多行居中对齐*/
+    line-height: 60px;
+
+}
+header #login p{
+   /* display: inline-block;
+    vertical-align: middle;                   与font-size实现多行文字居中。 这里是单行文字 所以采用line-height与height相等的方法*/
+    font-size:16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+header #login .move2{
+    border-top:2px solid #FF1493;
+    position: absolute;
+    top:43px;
+    left:34%;
+    width:0;
+    transition: width 0.4s ease-in-out;
+}
+header #login p:hover~.move2{
+    width:35%;
+}
+#banner-top{
+    background: url('/fuzhengsong/images/task07/pic01.jpg');
+    width:100%;
+    height: 650px;
+    background-size: 100% auto;
+}
+.banner-top-1{
+    width:40%;
+    height: 100%;
+    position: relative;
+}
+#banner-top p{
+    position: relative;
+    top:35%;
+    left:120px;
+    text-align: left;
+}
+#banner-top p .word-1 {
+    color: white;
+    font-size:60px;
+}
+#banner-top p .word-2{
+    color:white;
+    font-size: 24px;
+}
+#banner-top .word-3{
+    position: absolute;
+    top:70%;
+    left:120px;
+    width:300px;
+    height:60px;
+    background-color: #FF3333;
+    line-height: 60px;
+    text-align: center;
+    color: white;
+    font-size:28px;
+    cursor: pointer;
+    transition: background-color 0.4s ease-in-out;
+}
+#banner-top .word-3:hover{
+    background-color: #FF0000;
+}
+#tips-top {
+    width:100%;
+    height: 140px;
+    font-size: 0;                       /*font-size为0 解决了inline-block的空隙问题*/
+}
+#tips-top div{
+    width:25%;
+    display: inline-block;
+    text-align: center;
+    height: 140px;
+    font-size: 88px;
+}
+#tips-top div img{
+    vertical-align: middle;
+}
+#tips-bottom{
+    width:100%;
+    height: 100px;
+    font-size: 0;
+}
+#tips-bottom div{
+    display: inline-block;
+    height: 50px;
+    box-sizing: border-box;
+    border-right: 2px solid black;
+    width:25%;
+    text-align: center;
+    font-size: 33px;
+}
+#tips-bottom div p{
+    display: inline-block;
+    width:145px;
+    transition: color 0.4s ease-in-out;
+    font-size: 14px;
+    vertical-align: middle;
+}
+#tips-bottom div p:hover{
+    color:#FF1493;
+}
+#banner-top-2{
+    width:100%;
+    height: 400px;
+    background-color:#EDEAEA;
+    text-align: center;
+}
+#banner-top-2 img{
+    margin-top:80px;
+}
+#banner-top-2 p {
+    margin-top:40px;
+    font-size: 50px;
+}
+#select{
+    background: url('/fuzhengsong/images/task07/pic02.jpg');
+    background-size: 100% auto;
+    text-align: center;
+    position: relative;
+    width:100%;
+    height:300px;
+    margin:0;
+}
+#select .word-1{
+    font-size: 24px;
+    padding-top:85px;
+    color:white;
+}
+#select .word-2{
+    font-size: 14px;
+    color:white;
+    margin-top:10px;
+}
+#select .line{
+    margin-top: 10px;
+    border-top:2px solid #ffffff;
+    height: 20px;
+    width:30px;
+    display: inline-block;                   /*inline-block下text-align为center 有效*/
+    transition: width 0.4s ease-in-out;
+}
+#select .line:hover{
+    width:300px;
+}
+#select .options{
+    height: 36px;
+    font-size: 0;
+}
+#select input[type="radio"]{
+    width:240px;
+    height:36px;
+    margin:0 10px;
+    cursor: pointer;
+    top:45px;
+    position: relative;
+    z-index: 10;
+    opacity: 0;
+}
+#select .options .select{
+    width:240px;
+    height: 36px;
+    margin:0 10px;
+    font-size: 14px;
+    line-height: 36px;
+    text-align: left;
+    color: #b3b3b3;
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+    border:1px solid #ae7271;
+    background: url('/fuzhengsong/images/task07/icon-7.png') no-repeat 210px 8px #ffffff;
+                            /*  210 8px 为背景图案的position定位 210横向 8 纵向*/
+    background-size: 20px;
+}
+#select .options .select .option{
+    width:240px;
+    background-color: #e3e3e5;
+    position: absolute;
+    display: none ;        /*display 为none 则元素不可见*/
+    left:-2px;              /*为什么是-2px? ul中的2px边框会将内容区向右推2px导致无法对齐*/
+    top:34px;
+    z-index: 10;
+}
+#select input[type="radio"]:nth-of-type(1):checked~ .options .select{
+    top:-1px;
+}
+#select input[type="radio"]:nth-of-type(2):checked~ .options .select {
+    top:-1px;
+}
+#select input[type="radio"]:nth-of-type(1):checked~ .options .select-1{
+    border:2px solid #ae7271;
+    border-bottom-width: 0;
+}
+#select input[type="radio"]:nth-of-type(1):checked~ .options .select-1 .option{
+    display: block;
+}
+#select input[type="radio"]:nth-of-type(2):checked~ .options .select-2{
+    border: 2px solid #AE7271;
+    border-bottom-width: 0;
+}
+#select input[type="radio"]:nth-of-type(2):checked~ .options .select-2 .option{
+    display: block;
+}
+#select input[type="radio"]:nth-of-type(3):checked~ .options .select-3{
+    border: 1px solid #C6B3AF;
+}
+#select .options .select .option ul{
+    margin:0;
+    padding:0 ;
+    width: 240px;
+    box-sizing:border-box;
+    border:2px solid #ae7271;
+    border-top-width:0;
+}
+#select .options .select .option ul li{
+    height:32px;
+    line-height: 32px;
+    text-align: left;
+    padding-left: 40px;
+    list-style: none;
+    cursor: pointer;
+}
+#select .options .select .option ul li:hover {
+    background: url('/fuzhengsong/images/task07/icon-8.png') no-repeat 10px 8px, #BF4E48;
+    background-size: 20px;
+    color: #fff;
+}
+#select .options .select:last-of-type{
+    visibility: hidden;
+}
+#select .options .select span{
+    margin-left: 10px;
+}
+#select input[type="submit"]{
+    width: 240px;
+    height: 36px;
+    line-height: 36px;
+    font-size: 16px;
+    margin: 0 10px;
+    border: 0;
+    outline: 0;
+    background-color: #BE4F48;
+    color: #fff;
+    letter-spacing: 30px;
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    top: 36px;
+
+    -webkit-transition: background-color 0.4s ease-in-out;
+    -moz-transition: background-color 0.4s ease-in-out;
+    transition: background-color 0.4s ease-in-out;
+}
+#select input[type="submit"]:hover{
+    background-color:#C71585;
+}
+#banner-top-3
+{
+    width:100%;
+    height: 500px;
+    background-color:#e3e3e5 ;
+    position: relative;
+}
+#banner-top-3 #picture-box{
+    width: 80%;
+    height: 360px;
+    position: absolute;
+    top:50%;
+    left:10%;
+    margin-top:-180px;
+}
+#banner-top-3 #picture-box .picture{
+    float:left;
+    width:25%;
+    text-align: center;
+    padding:0
+}
+#banner-top-3 .picture img{
+    width:190px;
+    height: 300px;
+    margin:5px 0;
+}
+#banner-top-3 .picture .word-1{
+        font-size: 16px;
+        margin:8px 0;
+    
+}
+#banner-top-3 .picture .word-2
+{
+    font-size: 10px;
+    color: #A9A9A9;
+}
+#banner-top-4{
+    width:100%;
+    height: 560px;
+    position: relative;
+}
+#banner-top-4 #banner-top-4-left{
+    width:70%;
+    height: 560px;
+    background: url('/fuzhengsong/images/task07/pic07.jpg');
+    background-size:100% auto ;
+    text-align: center;
+}
+#banner-top-4 #banner-top-4-left #word{
+    display: inline-block;
+    font-size:30px;
+    color:white;
+    position: relative;
+    top:150px;
+}
+#banner-top-4 #banner-top-4-left #word p:nth-of-type(1){
+    font-size: 50px;
+    height: 50px;
+    line-height: 50px;
+}
+#banner-top-4 #banner-top-4-left #word p:nth-of-type(2){
+    font-size: 150px;
+    height: 150px;
+    line-height: 150px;
+    margin-bottom: 20px;
+}
+#banner-top-4 #banner-top-4-left:after{
+    content: "";
+    border-width:30px;
+    border-style: solid;
+    border-color: transparent #fff transparent transparent;
+    position: absolute;
+    left:70%;
+    top:250px;
+    margin-left: -60px;
+}
+#banner-top-4-right{
+    position: absolute;
+    left:70%;
+    top:0;
+    height:560px;
+    width:30%;
+}
+#banner-top-4-right #box{
+    text-align: center;
+    position: relative;
+    top:150px;
+    left:10%;
+    width:80%;
+    height: 300px;
+}
+#banner-top-4-right .word-1{
+    display: none;
+
+    margin-bottom: 30px;
+}
+#banner-top-4-right .page1{
+    display:block;
+}
+#banner-top-4-right .word-1 h2{
+    margin-bottom: 30px;
+}
+#banner-top-4-right .word-1 span{
+    color:red;
+}
+#banner-top-4-right .word-1 p{
+    font-size:14px;
+    line-height:30px;
+    color:darkgrey;
+    transition: color 0.4s ease-in-out;
+}
+#banner-top-4-right .word-1 p:hover{
+    color:black;
+}
+#banner-top-4-right #more{
+    display: inline-block;
+    background-color: white;
+    border:1px solid #DC143C;
+    width:100px;
+    height: 36px;
+    text-align: center;
+    line-height: 36px ;
+    color: #dc143c;
+    cursor: pointer;
+    transition: color,background-color 0.4s ease-in-out;
+    margin-bottom: 30px;
+}
+#banner-top-4-right #more:hover{
+    color:white;
+    background-color: #DC143C;
+}
+#banner-top-4-right #box #wrapper input[type="radio"]
+{
+    position: relative;
+    top:320px;
+}
+#banner-top-4-right #box #wrapper input[type="radio"]:nth-of-type(1):checked~ .page1{
+    display: block;
+}
+#banner-top-4-right #box #wrapper input[type="radio"]:nth-of-type(2):checked~ .page2{
+    display: block;
+}
+#banner-top-4-right #box #wrapper input[type="radio"]:nth-of-type(3):checked~ .page3{
+    display: block;
+}
+#banner-top-4-right #box #wrapper input[type="radio"]:checked~ .word-1{
+    display: none;
+}
+
+#banner-top-5{
+    width:100%;
+    height: 520px;
+    position: relative;
+}
+#banner-top-5 #banner-top-5-left{
+    width:35%;
+    height: 520px;
+    float:left;
+    background-color: #E84E4C;
+}
+#banner-top-5 #banner-top-5-middle{
+    width:35%;
+    height: 520px;
+    float:left;
+    background-color: white;
+}
+#banner-top-5 .word-1{
+    width:250px;
+    height: 200px;
+    position: relative;
+    top:220px;
+    left:50%;
+    margin-left:-125px;
+    text-align: center;
+}
+#banner-top-5  .word-1 p{
+    font-size: 22px;
+    line-height: 40px;
+}
+#banner-top-5 #banner-top-5-left .list1{
+    color:white;
+}
+#banner-top-5 #banner-top-5-middle .list2{
+    color:black;
+}
+#banner-top-5 .more{
+    display: inline-block;
+    margin-top:20px;
+    width:150px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+}
+#banner-top-5 #banner-top-5-left .more{
+    border:1px solid white;
+    color:white;
+    transition: all 0.4s ease-in-out;
+}
+#banner-top-5 #banner-top-5-middle .more{
+    border:1px solid #E84E4C;
+    color:#E84E4C;
+    transition: all 0.4s ease-in-out;
+}
+#banner-top-5 #banner-top-5-left .more:hover{
+    background-color:white;
+    color:#E84E4C;
+}
+#banner-top-5 #banner-top-5-middle .more:hover{
+    background-color: #E84E4C;
+    color:white;
+}
+#banner-top-5 .line{
+    margin-top: 5px;
+    width:30px;
+    height: 20px;
+    display: inline-block;
+    transition: width 0.4s ease-in-out;
+}
+#banner-top-5 #banner-top-5-left .line{
+    border-top:1px solid white;
+}
+#banner-top-5 #banner-top-5-middle .line{
+    border-top:1px solid gray;
+}
+#banner-top-5 .line:hover{
+    width:220px;
+}
+#banner-top-5 #banner-top-5-middle:after{
+    content: " ";
+    position: absolute;
+    top:250px;
+    left:70%;
+    border-width:30px;
+    border-style: solid;
+    border-color: transparent transparent transparent #ffffff;
+}
+#banner-top-5 #banner-top-5-right{
+    width:30%;
+    height: 520px;
+    float:left;
+    background: url('/fuzhengsong/images/task07/task07 15.jpg') no-repeat;
+    background-size:100% auto;
+}
+#banner-top-6{
+    width:100%;
+    height:800px;
+    text-align: center;
+}
+#banner-top-6 #top{
+    margin-top:100px;
+    margin-left:35%;
+    width:30%;
+    height: 150px;
+
+
+}
+#banner-top-6 #top .line{
+    margin-top:5px;
+    display: inline-block;
+    width:30px;
+    border-top:2px solid #E84E4c;
+    height: 20px;
+    transition: width 0.4s ease-in-out;
+}
+#banner-top-6 #top .line:hover{
+    width:180px;
+}
+#banner-top-6 .content{
+    font-size: 14px;
+    color:gray;
+}
+#banner-top-6 #bottom{
+    width:100%;
+    height: 490px;
+    margin-top: 100px;
+}
+/*#banner-top-6 #bottom #left{
+    float:left;
+    width:35%;
+}
+#banner-top-6 #bottom #left #left-box{
+    float:right;
+    width:350px;
+    height:500px;
+}
+#banner-top-6 #bottom #left #left-box .more{
+    display: block;
+    position: relative;
+    left:290px;
+    margin-bottom: 50px;
+    margin-top:10px;
+    width:100%;
+}
+#banner-top-6 #bottom #right{
+
+}
+*/
+#banner-top-6 #bottom #left .head{
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+#banner-top-6 #bottom #left
+{
+    width:30%;
+    height: 400px;
+    display: inline-block;
+    text-align: left;
+    vertical-align: top;
+}
+#banner-top-6 #bottom #left .mes{
+    width: 350px;
+    height: 130px;
+}
+#banner-top-6 #bottom #left span{
+    float:right;
+    cursor: pointer;
+}
+#banner-top-6 #bottom #right {
+    width: 700px;
+    height: 400px;
+    display: inline-block;
+    text-align: left;
+
+}
+#banner-top-6 #bottom #right input[type="text"]{
+    width:300px;
+    height:40px;
+    margin:10px;
+    background-color:#F0F8FF;
+    color:#aaaaaa;
+    font-size: 14px;
+    border:0;
+    outline: 0;
+}
+#banner-top-6 #bottom #right textarea{
+    margin:10px;
+    background-color:#F0F8FF;
+    color:#aaaaaa;
+    font-size: 14px;
+    border:0;
+    outline: 0;
+}
+#banner-top-6 #bottom #right input[type="submit"]{
+    width:630px;
+    height: 40px;
+    margin-left: 10px;
+    font-size: 16px;
+    border:0;
+    outline: 0;
+    background-color: #dedede;
+}
+#banner-bottom-1{
+    width:100%;
+    height: 400px;
+    background-color: #33363F;
+    text-align: center;
+}
+#banner-bottom-1 #word-1{
+    width:550px;
+    display: inline-block;
+    height: 150px;
+    margin-top: 80px;
+    color:#F7F8FC;
+}
+#banner-bottom-1 #word-1 p:nth-of-type(1){
+    font-size:20px;
+}
+#banner-bottom-1 #word-1 p:nth-of-type(2){
+    font-size: 14px;
+}
+#banner-bottom-1 form{
+    font-size: 0;
+}
+#banner-bottom-1 form input[type="email"]{
+    height: 40px;
+    border:0;
+    outline: 0;
+    width:500px;
+    font-size: 15px;
+    padding-left: 10px;
+}
+#banner-bottom-1 form input[type="submit"]{
+    height: 40px;
+    border:0;
+    outline: 0;
+    width:100px;
+    font-size: 16px;
+    background-color: #75757F;
+    color:white;
+    letter-spacing: 10px;
+    transition: background-color 0.4s ease-in-out;
+    cursor: pointer;
+    font-weight: bold;
+
+}
+#banner-bottom-1 form input[type="submit"]:hover {
+    background-color:  #5E5E68;
+}
+#banner-bottom-1 .icon{
+    height: 70px;
+    width:100%;
+    margin-top:20px;
+}
+footer{
+    width:100%;
+    height: 60px;
+    background-color: #30303A;
+}
+footer .word-1,footer .word-2{
+    height: 60px;
+    font-size:10px;
+    width:300px;
+    display: inline-block;
+    text-align: center;
+    line-height: 60px;
+    color: #ffffff;
+}
+footer .word-1{
+    float:left;
+}
+footer .word-2 {
+    float:right;
+
+}
+footer .word-2 a{
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.4s ease-in-out;
+}
+footer .word-2 a:hover{
+    color:#75757F;
+}
