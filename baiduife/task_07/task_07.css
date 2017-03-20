@@ -18,7 +18,7 @@ header #header-left{
     height: 60px;
     width:10%;
     position: relative;
-    background:url('/fuzhengsong/images/task07/icon-1.png') no-repeat left;
+    background:url('icon-1.png') no-repeat left;
     line-height: 60px;          /*line-height与height相同使得单行文字的居中对齐。*/
     background-size: 16% 50%;
     text-align: center;
@@ -272,7 +272,7 @@ header #login p:hover~.move2{
     background-color: #e3e3e5;
     position: absolute;
     display: none ;        /*display 为none 则元素不可见*/
-    left:-2px;              /*为什么是-2px? ul中的2px边框会将内容区向右推2px导致无法对齐*/
+    left:-2px;              /*ul中的2px边框会将内容区向右推2px导致无法对齐*/
     top:34px;
     z-index: 10;
 }
