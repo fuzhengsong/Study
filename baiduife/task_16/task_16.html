@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        #input{
+            width:500px;
+            height: 300px;
+            display: inline-block;
+            margin-top: 30px;
+
+            /*text-align: left;*/
+        }
+        span{
+            display: inline-block;
+            width:40%;
+            line-height: 3em;
+            text-align: right;
+        }
+        #add-btn{
+            width:30%;
+            background-color: #00b3ee;
+            height: 40px;
+            font-size: 14px;
+            outline: 0;
+            border: 0;
+            border-radius: 5px;
+            color:white;
+            margin-top:10px;
+            cursor: pointer;
+            transition: background-color 0.4s ease-in-out;
+        }
+        #add-btn:hover{
+            background-color: #0D3349;
+        }
+        #table-show{
+            width:400px;
+            display: inline-block;
+        }
+        table{
+            /*display: inline-block;*/
+            border-collapse: collapse;
+            width:400px;
+        }
+        .del{
+            background-color: #00b3ee;
+        }
+    </style>
+</head>
+<body>
+<div id="input">
+<label><span>城市名称：</span><input id="aqi-city-input" type="text" ></label><br/>
+<label><span>空气质量指数：</span><input id="aqi-value-input" type="text"></label><br/>
+<button id="add-btn">确认添加</button>
+</div><br/>
+<div id="table-show">
+<table id="aqi-table" border="1" >
+    <tr>
+        <th>城市</th>
+        <th>空气质量指数</th>
+        <th>操作</th>
+    </tr>
+</table>
+</div>
+<div id="test"></div>
+<script src="\fuzhengsong\jquery\jquery-3.1.1.js"></script>
+<script>
+    var city,value;
+    var aqiData={};
+    var i=1;
+    $(function () {
+        $("#add-btn").click(function () {
+        //    var ary = [];
+
+            city = $("#aqi-city-input").val();
+            value = $("#aqi-value-input").val();                        //获取控件中的值
+            //  if(typeof value==="number"&&value%1===0){
+            //             判断是否是整数
+            if (!city.match(/^[A-Za-z\u4E00-\u9FA5]+$/)) {
+                alert("城市名需为中英文字符");
+            }
+            else {
+                if (parseInt(value) != value || value == "") {
+                    alert("请输入一个整数指数");
+                }
+                else {
+       //             ary.push(city, value);
+       //             aqiData.push(ary);
+                    var table = document.getElementById("aqi-table");
+                    if (!aqiData.hasOwnProperty(city)) {
+                        aqiData[city] = value;
+                        table.insertRow(i);
+                        table.rows[i].insertCell(0);
+                        table.rows[i].cells[0].appendChild(document.createTextNode(city));
+                        table.rows[i].insertCell(1);
+                        table.rows[i].cells[1].appendChild(document.createTextNode(aqiData[city]));
+                        table.rows[i].insertCell(2);
+                        var btn = document.createElement("button");
+                        btn.className = "del";
+                        btn.appendChild(document.createTextNode("删除"));
+                        table.rows[i].cells[2].appendChild(btn);
+                        i++;
+                    }
+
+                    /* if(i!=2){
+            var tableTd=document.createElement("td");
+            var textNode=document.createTextNode(ary[i]);
+            tableTd.appendChild(textNode);
+            tableTr.appendChild(tableTd);                       //添加城市和空气指数到表格中
+            }
+            else{
+                var tableTdBtn=document.createElement("td");
+                var textNodeBtn=document.createTextNode("<button id='del-btn'>删除</button>");
+                tableTdBtn.appendChild(textNodeBtn);
+                tableTr.appendChild(tableTdBtn);
+            }
+            }*/}
+            }
+        });
+                $("table").delegate("button","click",function () {
+
+                    var strCity=$(this).parents("tr").find("td").eq(0).html();
+                   // document.getElementById("test").innerHTML=strCity;
+                    delete aqiData[strCity];
+                    $(this).parents("tr").remove();
+                    i--;
+                });
+
+
+
+//                $(this).parents("tr").remove();
+//                i--;
+
+
+    })
+
+
+</script>
+</body>
+</html>
