@@ -1,0 +1,48 @@
+body{
+    display: flex;
+    justify-content: center;
+}
+#form1{
+    display: flex;
+    flex-wrap: wrap;
+    width:500px;
+    height: 200px;
+    align-content: space-around;
+}
+.rad{
+    display: block;
+    flex-basis:50%;
+    font:25px "微软雅黑";
+}
+input[type="radio"]{
+    width:20px;
+    height: 20px;
+}
+.sel{
+    display: flex;
+    flex-basis: 100%;
+
+}
+select[name="city"]{
+    height: 30px;
+
+    flex-basis: 30%;
+}
+select[name="college"]{
+    height: 30px;
+    margin-left: 60px;
+    flex-basis: 50%;
+
+}
+.job{
+    display: none;
+    flex-basis: 100%;
+    font:20px "微软雅黑";
+    font-weight: bold;
+}
+input[type="text"]{
+    height: 30px;
+    border-radius: 4px;
+    border: 1px solid silver;
+    margin-left: 10px;
+}
