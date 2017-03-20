@@ -1,0 +1,154 @@
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    background-color: #aaaaaa;
+    font-weight: bold;
+}
+
+
+header{
+    height:75px;
+    background-color: black;
+
+}
+header  img{
+   height: 60px;
+    width:60px;
+    margin:5px 20px;
+    float: left;
+
+
+}
+header ul li{
+    float: right;
+    margin-right: 20px;
+    display: block;
+}
+header ul li a{
+    line-height: 75px;
+    text-decoration: none;
+    color: white;
+}
+header ul li:hover{
+    border-bottom: 2px solid red;
+    background: #474747;
+    border-radius: 5px;
+}
+div.article{
+    margin: 20px 450px 20px 20px;
+    background-color: white;
+    box-shadow: 1px 1px 1px #474747;
+    padding:20px;
+
+}
+.article h2{
+    margin:10px;
+}
+.article h3{
+    color: #aaaaaa;
+    margin:10px;
+}
+.article ul{
+    list-style-type: none;
+}
+.article ol{
+    margin:20px 60px;
+}
+.article p{
+    text-indent: 2em;
+    line-height: 1.5em;
+}
+.article p a{
+    color:blue;
+}
+.article p a:hover{
+    color:red;
+}
+.author{
+    color: #aaaaaa;
+    font-size: small;
+    margin:10px;
+}
+.article img{
+    width:300px;
+    height:200px;
+    margin:20px;
+}
+.picture label{
+    display: block;
+}
+.picture div{
+    text-align: center;
+    margin:10px;
+    padding:10px;
+    float:left;
+    border:1px solid gray;
+}
+.picture img{
+    width:180px;
+    height:150px;
+}
+.clearfloat:after{
+    display: block;
+    content: "";
+    clear: both;
+    visibility: hidden;
+    height: 0;
+}
+table{
+    border-collapse: collapse;
+    width:100%;
+}
+table #head {
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+table tr td{
+    padding:5px;
+    border:1px solid #aaaaaa;
+}
+table #tablesum{
+    background-color: #aaaaaa;
+}
+.side{
+    width:370px;
+    position: absolute;
+    right:20px;
+    top:95px;
+    background-color: white;
+    box-shadow: 1px 1px 1px #474747;
+    padding:20px;
+}
+.side h3{
+    border-left: 5px solid gray;
+    margin:10px;
+    padding:10px;
+}
+.side form label{
+    display: inline-block;
+    width:40%;
+    text-align: right;
+    margin:10px;
+}
+#submit{
+    height:38px;
+    width:100%;
+    background-color: cornflowerblue;
+    border-radius: 8px;
+    margin-top: 10px;
+    text-align: center;
+    color:white;
+    font-size:20px;
+
+}
+.tips{
+    font-size: 10px;
+    color: #999999;
+    position: relative;
+    left:130px;
+}
