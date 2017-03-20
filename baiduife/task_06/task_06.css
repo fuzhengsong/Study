@@ -1,0 +1,337 @@
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    background-color:#474747;
+}
+#outtsetbox{
+    background-color: white;
+    position: relative;
+    width:892px;
+    height:1386px;
+    left:50%;
+    margin-left: -490px;
+    padding:0 44px 0 44px;
+}
+#head{
+    margin:0;
+    height:61px;
+    width:892px;
+    border-bottom: 2px solid #938e8c;
+    display: table;
+    margin-bottom: 30px;
+}
+#head #logo{
+    display: table;
+    height: 61px;
+    width:110px;
+    background-color:#FF3366;
+}
+.headleft{
+    font:12px 黑体;
+    color:#ffffff;
+    display: table-cell;
+    vertical-align: bottom;
+    text-align: left;
+    padding-bottom: 2px;
+}
+.headright{
+    display: table-cell;
+    text-align: right;
+    font:12px 黑体;
+    color: #d45d5c;
+    vertical-align: bottom;
+    padding-bottom: 2px;
+}
+#picture {
+    background-image: url('/fuzhengsong/images/星空.jpg');
+    background-size: 641px 301px;
+    width:641px;
+    height: 301px;
+    position: relative;
+    margin-bottom: 30px;
+}
+#pictureleft{
+    width:191px;
+    height: 301px;
+    background-color: greenyellow;
+    opacity: 0.5;
+}
+#pictureright{
+    width:191px;
+    height: 301px;
+    background-color: orangered;
+    opacity: 0.5;
+    position: absolute;
+    left:450px;
+    top:0;
+}
+#part1{
+    position: relative;
+}
+#title{
+    position: absolute;
+    right:0;
+    top:0;
+    width:203px;
+    height:301px;
+    border-top:2px solid #cc8091;
+
+}
+#title .one{
+    font:15px 微软雅黑;
+    color: #000;
+    text-decoration: underline;
+    font-weight: bold;
+}
+#title .one span{
+    font-size: 1.5em;
+}
+#title .two{
+    font:italic 12px 楷体;
+    color:#676767;
+
+}
+#title .three{
+    font:italic 116px 微软雅黑;
+    color:#75b86b;
+}
+#title .four{
+    float:left;
+    font:55px 微软雅黑;
+    color:#cc8091;
+}
+#title .five{
+    font:21px 微软雅黑;
+    color:#cc8091;
+    position: absolute;
+    bottom:13px;
+    left:90px;
+
+}
+#title .six{
+    font:12px 微软雅黑;
+    color:#cc8091;
+    position: absolute;
+    bottom: 0;
+    left:90px;
+}
+#part2{
+    margin-bottom: 30px;
+}
+#part2 .low{
+    float:left;
+    width:200px;
+    margin-right:15px;
+}
+#part2 .what{
+    font:16px 微软雅黑;
+    font-weight: bold;
+    text-decoration: underline;
+    color:#418c59;
+    margin-bottom: 5px;
+
+}
+#part2 .when{
+     font:16px 微软雅黑;
+     font-weight: bold;
+     text-decoration: underline;
+     color:#d2994f;
+    margin-bottom: 5px;
+ }
+#part2 .how{
+    font:16px 微软雅黑;
+    font-weight: bold;
+    text-decoration: underline;
+    color:#cc7680;
+    margin-bottom: 5px;
+}
+#part2 .content{
+    font:12px 微软雅黑;
+    color:#231815;
+    opacity: 0.7;
+}
+#part2 span{
+    font: italic 12px 微软雅黑;
+    color: #cd4a48;
+    opacity: 0.7;
+}
+#part2 .one{
+    font:12px 微软雅黑;
+    font-weight: 800;
+    opacity: 0.7;
+}
+.clearfloat:after{
+    display: block;
+    content:"";
+    clear: both;
+    visibility: hidden;
+    height: 0;
+}
+#part3 .one{
+    font:42px 黑体;
+    font-weight: bold;
+    color: #11456b;
+}
+#part3 .two{
+    font:italic 72px 黑体;
+    font-weight: bold;
+    color:#f5e327;
+}
+#part3 .three{
+    font:33px 黑体;
+    font-weight: bold;
+    color: #11456b;
+}
+#part3{
+    border-bottom: 2px solid #11456b;
+    width:415px;
+    padding-bottom: 10px;
+}
+#part4{
+    width:415px;
+    margin-top: 30px;
+}
+#part4 span{
+    font:70px 微软雅黑;
+    float:left;
+    color:#f5e327;
+}
+#part4 p{
+    font:12px 宋体;
+    color:#767777;
+    line-height: 1.5em;
+}
+#part4 .one{
+
+    text-indent: 2em;
+}
+#part4 img{
+    float:right;
+    width:150px;
+    height:200px;
+}
+#part5 {
+    width:458px;
+    height:275px;
+    background-image: url('/fuzhengsong/images/sun.jpg');
+    background-size:458px 275px;
+    position: absolute;
+    top:0;
+    left:425px;
+
+}
+#flow{
+    position: relative;
+}
+#part5 .desc {
+    width:458px;
+    height: 61px;
+    opacity: 0.7;
+    background-color: #231815;
+    position: relative;
+    top:214px;
+}
+#part5 p{
+    position: relative;
+    top:8px;
+    left:50px;
+    border-left: 3px solid #72b16a;
+    font:26px 微软雅黑;
+    color:#fff;
+    padding-left:10px;
+    height: 44px;
+}
+#part5 span{
+    font:italic 12px 微软雅黑;
+    color: #72b16a;
+}
+#part6{
+    width:459px;
+    height:318px;
+    position: absolute;
+    top:300px;
+    left:425px;
+    background-color: #FFEBCD;
+}
+#part6 .up {
+    width:459px;
+    margin-top: 20px;
+    margin-left: 40px;
+    padding-bottom:20px;
+}
+#part6 .left{
+    font:16px 宋体;
+    color:#5a5b5b;
+
+}
+#part6 .right{
+    position:absolute;
+    right:5px;
+    font:italic 12px 宋体;
+    color:#5a5b5b;
+}
+#part6 #left{
+    width:260px;
+    height: 160px;
+    background-color: red;
+    position: absolute;
+    bottom: 0;
+    left:0;
+}
+#part6 #left .zero {
+    font: 110px 微软雅黑;
+    color: #fff;
+    position: relative;
+    top:10px;
+    left:10px;
+}
+#part6 .one{
+    padding:0;
+    margin:0;
+    width:180px;
+    height: 86px;
+    position: absolute;
+    left:80px;
+    top:40px;
+    border-left: 2px solid #fff;
+}
+#part6 .two{
+    font:italic 21px 黑体;
+    padding:4px 6px 4px 12px ;
+    color:#fff;
+}
+#part6 .three{
+    font: 12px 黑体;
+   padding-left:12px;
+    color:#fff;
+}
+#part6 #right{
+    height:160px;
+    width:180px;
+    position: absolute;
+    top:158px;
+    left:270px;
+}
+#part6 .five{
+    font:italic 14px 黑体;
+    color:#5a5b5b;
+    padding:5px;
+}
+#part6 .four{
+    font:40px 黑体;
+    color:#d45d5c;
+}
+footer{
+    position: absolute;
+    height: 30px;
+    bottom:10px;
+    width:892px;
+    border-top:1px solid #938e8c;
+}
+footer p{
+    float:right;
+    font:12px 黑体;
+    color:#d45d5c;
+}
