@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bootstrap表格</title>
+  <link href="bootstrap.min.css" rel="stylesheet">
+  <style>
+    h2{
+      margin-left: 20px;
+    }
+  </style>
+</head>
+<body>
+<h2>table 中的.table类--添加内补和分割线</h2>
+<h2>.table-striped 添加条纹线</h2>
+<h2>.table-bordered  为每个单元格添加边框</h2>
+<h2>.table-hover 每行对鼠标悬停做出响应</h2>
+<table class="table table-striped table-bordered table-hover">
+  <tr>
+    <th>#</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>User Name</th>
+  </tr>
+  <tr>
+    <th>1</th>
+    <td>Mark</td>
+    <td>Mark</td>
+    <td>Mark</td>
+  <tr>
+    <th>2</th>
+    <td>Mark</td>
+    <td>Mark</td>
+    <td>Mark</td>
+  </tr>
+  <tr>
+    <th>3</th>
+    <td>Mark</td>
+    <td>Mark</td>
+    <td>Mark</td>
+  </tr>
+</table>
+
+
+<h2>对每行的表格进行颜色标识--状态类</h2>
+<h2>.active 等同于鼠标悬停的颜色</h2>
+<h2>.info  信息提示的颜色</h2>
+<h2>.success 标识成功状态的颜色 比如绿色</h2>
+<h2>.warning  警告的颜色 比如黄色</h2>
+<h2>.danger  标识危险的颜色 比如红色</h2>
+<h2>.table-responsive 创建响应式表格，即小于768px时，会有水平滚动条，表格需包含在有该类的元素中</h2>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered">
+    <tr class="active">
+      <th >#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>User Name</th>
+    </tr>
+    <tr class="info">
+      <th>3</th>
+      <td>Mark</td>
+      <td>Mark</td>
+      <td>Mark</td>
+    </tr>
+    <tr class="success">
+      <th>1</th>
+      <td>Mark</td>
+      <td>Mark</td>
+      <td>Mark</td>
+    <tr class="warning">
+      <th>2</th>
+      <td>Mark</td>
+      <td>Mark</td>
+      <td>Mark</td>
+    </tr>
+    <tr class="danger">
+      <th>3</th>
+      <td>Mark</td>
+      <td>Mark</td>
+      <td>Mark</td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

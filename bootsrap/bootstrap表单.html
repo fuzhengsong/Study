@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bootstrap表单</title>
+  <link href="bootstrap.min.css" rel="stylesheet">
+  <style>
+    body{
+      padding:10px 20px;
+    }
+    h2{
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+<h2>label和input外层包裹.form-group类可以获得更好的排列（元素之间会有间隔），input中的form-control属性会使其占用100%宽度</h2>
+<form>
+  <div class="form-group">
+    <label for="InputEmail">Email address</label>
+      <input type="text" class="form-control" id="InputEmail" placeholder="Email">
+  </div>
+  <div class="form-group">
+    <label for="InputPassword">Password</label>
+    <input type="text" class="form-control" id="InputPassword" placeholder="Password">
+  </div>
+  <div class="form-group">
+    <label for="InputFile">File Input</label>
+    <input type="file" id="InputFile">
+    <p class="help-block">Example block-level help text here.</p>
+  </div>
+  <div  class="checkbox">
+    <label>
+      <input type="checkbox">check box
+    </label>
+ </div>
+  <button type="submit" class="btn btn-default" >Submit</button>
+</form>
+
+
+<h2>form-group类和另一个类input-group不要混合使用,input-group可以嵌套在form-group中</h2>
+<form>
+  <div class="form-group ">
+    <label for="InputEmail1">Email address</label>
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1">@</span>
+      <input type="text" class="form-control" id="InputEmail1" placeholder="Email" aria-describedby="basic-addon1">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="InputPassword1">Password</label>
+    <div class="input-group">
+      <input type="text" class="form-control" id="InputPassword1" placeholder="Password">
+      <span class="input-group-addon" id="basic-addon2">@example.com</span>
+    </div>
+  </div>
+</form>
+
+
+<h2>将form设置一个form-inline属性可以变成内联表格 ，比如：</h2>
+<form class="form-inline">
+  <div class="form-group ">
+    <label for="InputEmail1">Email address</label>
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon3">@</span>
+      <input type="text" class="form-control" id="InputEmail2" placeholder="Email" aria-describedby="basic-addon3">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="InputPassword1">Password</label>
+    <div class="input-group">
+      <input type="text" class="form-control" id="InputPassword2" placeholder="Password">
+      <span class="input-group-addon" id="basic-addon4">@example.com</span>
+    </div>
+  </div>
+</form>
+
+
+<h2>表单中的label标签是必须的，不然在阅读器中会无法识别，可以为label标签设置.sr-only将其隐藏。如果是在checkbox中，可以在input中设置
+label的替代属性aria-label来设置</h2>
+<form class="form-inline">
+  <div class="form-group ">
+    <label for="InputEmail1" class="sr-only">Email address</label>
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon5">@</span>
+      <input type="text" class="form-control" id="InputEmail3" placeholder="Email" aria-describedby="basic-addon5">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="InputPassword1" class="sr-only">Password</label>
+    <div class="input-group">
+      <input type="text" class="form-control" id="InputPassword3" placeholder="Password">
+      <span class="input-group-addon" id="basic-addon6">@example.com</span>
+    </div>
+  </div>
+</form>
+
+
+<h2>form的类设置为form-horizontal并结合栅格系统可以使表单水平排列，label为左边2列，input为右边10列，比如：</h2>
+<form class="form-horizontal">
+  <div class="form-group">
+    <label for="Email" class="col-md-2 control-label">Email</label>
+    <div class="col-md-10">
+      <input type="text" id="Email" class="form-control" placeholder="Email">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="Password" class="col-md-2 control-label">Password</label>
+    <div class="col-md-10">
+      <input type="text" id="Password" class="form-control" placeholder="Password">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+      <div class="checkbox">
+        <label><input type="checkbox">Checkbox</label>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-offset-2 col-md-10">
+    <button type="submit" class="btn btn-default">Submit</button>
+  </div>
+</form>
+
+
+<h2>checkbox和radio,这里只介绍了checkbox，radio同理</h2>
+<form>
+  <div class="checkbox">
+    <label><input type="checkbox" >Option one is this and that&mdash;be sure to include why it's great</label>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox">Option two is disabled
+    </label>
+  </div>
+</form>
+<h3>在label中设置了checkbox-inline，就会同行显示</h3>
+<form>
+<label class="checkbox-inline">
+  <input type="checkbox">Option one is this and that&mdash;be sure to include why it's great
+</label>
+<label class="checkbox-inline">
+  <input type="checkbox">Option two is disabled
+</label>
+</form>
+
+
+<h2>静态控件，为p元素添加.form-control-static类可以与label保持较好的位置</h2>
+<form class="form-horizontal">
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-10">
+      <p class="form-control-static">email@example.com</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="inputPassword5" placeholder="Password">
+    </div>
+  </div>
+</form>
+
+
+<div class="form-group has-success">
+  <label class="control-label" for="inputSuccess1">Input with success</label>
+  <input type="text" class="form-control" id="inputSuccess1" aria-describedby="helpBlock2">
+  <span id="helpBlock2" class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+</div>
+</body>
+</html>

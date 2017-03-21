@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>栅格系统</title>
+    <link href="bootstrap.min.css" rel="stylesheet">
+  <style>
+    /*calc用于计算元素的宽度，特别适用于自适应的布局中，比如需要计算百分比和数字相加相减或者相乘的运算*/
+    body{
+      text-align: center;
+    }
+    [class*="col-"]{
+      border:1px solid #973634;
+      padding:5px 15px;
+      margin-bottom:10px;
+      background-color: #C6B3AF;
+      line-height: 50px;
+    }
+
+
+  </style>
+</head>
+<body>
+<img src="\fuzhengsong\bootstrap-3.3.7\images\栅格参数表.jpg">
+
+
+<h3>栅格化一行为12列，该实例是在桌面屏幕中将3行分为了12分 8-4 以及4-4-4等分，当窗口小于某个值时会全部堆叠在一起</h3>
+<div class="container">
+  <!--所有的行需包含在row中-->
+  <div class="row">
+    <div class="col-md-1">col-md-1</div>
+    <div class="col-md-1">col-md-1</div>
+    <div class="col-md-1">col-md-1</div>
+    <div class="col-md-1">col-md-1</div>
+    <div class="col-md-1">col-md-1</div>
+    <div class="col-md-1">col-md-1</div>
+    <div class="col-md-1">col-md-1</div>
+    <div class="col-md-1">col-md-1</div>
+    <div class="col-md-1">col-md-1</div>
+    <div class="col-md-1">col-md-1</div>
+    <div class="col-md-1">col-md-1</div>
+    <div class="col-md-1">col-md-1</div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">col-md-8</div>
+    <div class="col-md-4">col-md-4</div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">.col-md-4</div>
+    <div class="col-md-4">.col-md-4</div>
+    <div class="col-md-4">.col-md-4</div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">.col-md-6</div>
+    <div class="col-md-6">.col-md-6</div>
+  </div>
+</div>
+
+
+
+<h3>区分移动屏幕和桌面屏幕，不同的宽度采用不同的布局</h3>
+<!--container-fluid 将固定宽度布局转化为100%宽度布局-->
+<div class="container-fluid">
+  <div class="row">
+    <!--桌面屏幕时，分为2列比例为8:4，移动屏幕时，分为了2行，一行占12列，一行占6列，即当一行不够时，另起一行-->
+    <div class="col-xs-12 col-md-8">.col-xs-12 .col-md-8</div>
+    <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+  </div>
+  <div class="row">
+    <!--桌面屏幕时，三等分4:4:4。移动屏幕时，分为2行，一行6+6=12列 空间不够另起一行为6列-->
+    <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+    <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+    <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+  </div>
+  <div class="row">
+    <!--在移动设备和桌面屏幕中始终是占50%，即6:6-->
+    <div class="col-xs-6">.col-xs-6</div>
+    <div class="col-xs-6">.col-xs-6</div>
+  </div>
+
+
+</div>
+
+
+<h3>手机 平板 桌面  clearfix用法 visible-xs-block作用</h3>
+<div class="container-fluid">
+  <div class="row">
+    <!--注意：当没有指定大于某个阈值采用多少列的布局时，会延续之前的列数。比如下面这个例子中“col-xs-6”在平板大小屏幕下，即"col-sm-"-->
+    <!--也是采用了6列的布局，所有会看到在平板大小下，有2个6列，而不是只有“col-sm-6”一个6列哦!反之，没有指定小于某个阈值采用多少列的布局
+    也会沿用之前的列数。总结就是，当没有碰到阈值时，列数不会改变-->
+    <div class="col-xs-12 col-sm-6 col-md-8">col-xs-12 col-sm-6 col-md-8</div>
+    <div class="col-xs-6 col-md-4">col-xs-6 col-md-4</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4
+      .col-xs-6 .col-sm-4 .col-xs-6 .col-sm-4 .col-xs-6 .col-sm-4 .col-xs-6 .col-sm-4 .col-xs-6 .col-sm-4</div>
+
+    <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
+
+    <!--在这个row中，超小屏幕下分为2行 12列和6列，但是，在第一个div中，内容较多高度较高，如果没有clearfix情况下，第二行会和第一行并排-->
+    <!--显示，而不是显示在第一行下方，这里就需要clearfix来清除之前元素的浮动，使得第二行显示在下方。但是如果只是清除浮动，那么在大屏幕-->
+    <!--下，第三个元素也会显示在第二行（因为列都是浮动排列的，而我们清除了浮动），所以引入visible-xs-block的类，使得清除浮动在超小屏幕-->
+    <!--下有效。-->
+
+    <div class="clearfix visible-xs-block"></div>
+    <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
+  </div>
+</div>
+
+<h3>列的偏移 </h3>
+<div class="row">
+  <div class="col-xs-6 col-sm-4">col-xs-6 col-sm-4
+  </div>
+  <div class="col-xs-6 col-sm-4">col-xs-6 col-sm-4
+  </div>
+  <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-0">col-xs-6 col-xs-offset-3
+  </div>
+</div>
+
+
+<h3>列的排序 col-md-push-* col-md-pull-* *为1-12的数</h3>
+<div class="row">
+    <!--push可以理解为向后推3列，pull可以理解为向前推9列-->
+    <div class="col-md-9 col-md-push-3">col-md-9</div>
+    <div class="col-md-3 col-md-pull-9">col-md-3</div>
+</div>
+</body>
+
+</html>
