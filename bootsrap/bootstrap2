@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bootstrap实例2</title>
+  <link href="bootstrap.min.css" rel="stylesheet">
+  <style>
+    body{
+      padding:0;
+    }
+    .col-md-2 {
+      background-color: #c3c3c3;
+      height: 1024px;
+      padding:20px 5px;
+    }
+    .nav-sidebar{
+      margin-bottom: 20px;
+    }
+    .panel{
+      margin:10px 10px;
+      width:100%;
+    }
+    #table .btn{
+      margin-left:20px;
+
+    }
+    .list-group-item{
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+<!--导航条-->
+<nav class="nav navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button"  class="navbar-toggle" data-toggle="collapse" data-target="#myCollapse">
+        <span class="sr-only">折叠导航</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="#" class="navbar-brand">某管理系统</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myCollapse">
+      <ul class="nav navbar-nav" >
+        <li class="active"><a href="#">首页</a></li>
+        <li><a href="#"  data-toggle="dropdown">功能
+        <span class="caret"></span>
+          <ul class="dropdown-menu">
+            <li class="dropdown-header">业务功能</li>
+            <li><a href="#">信息建立</a></li>
+            <li><a href="#">信息查询</a></li>
+            <li><a href="#">信息管理</a></li>
+            <li class="divider"></li>
+            <li class="dropdown-header">系统功能</li>
+            <li><a href="#">设置</a></li>
+          </ul>
+        </a></li>
+        <li><a href="#">帮助</a></li>
+      </ul>
+      <!--导航条中的表单元素-->
+      <form class="navbar-form navbar-right">
+        <input type="text" id="username" class="form-control" placeholder="用户名...">
+        <input type="password" id="password" class="form-control" placeholder="密码...">
+        <button type="button" class="btn btn-default">登录</button>
+      </form>
+    </div>
+  </div>
+  </nav>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 col-sm-3">
+      <!--侧边导航栏-->
+        <ul class="nav nav-sidebar">
+        <li class="active"><a href="#">首页</a></li>
+        </ul>
+        <ul class="nav nav-sidebar">
+          <li><a href="#">信息建立</a></li>
+          <li><a href="#">信息查询</a></li>
+          <li><a href="#">信息管理</a></li>
+        </ul>
+        <ul class="nav nav-sidebar">
+          <li><a href="#">设置</a></li>
+          <li><a href="#">帮助</a></li>
+        </ul>
+    </div>
+    <!--管理控制台-->
+    <div class="col-md-10 col-sm-9">
+      <h1>管理控制台</h1>
+      <hr>
+      <!--不同状态的按钮-->
+      <button class="btn btn-default btn-lg">操作1</button>
+      <button class="btn btn-success btn-lg">操作1</button>
+      <button class="btn btn-primary btn-lg">操作2</button>
+      <button class="btn btn-warning btn-lg">操作3</button>
+      <button class="btn btn-info btn-lg">操作4</button>
+      <button class="btn btn-danger btn-lg">操作5</button>
+      <div class="row">
+        <div class="col-md-6">
+          <!--面板-->
+            <div class="panel panel-primary">
+              <div class="panel-heading">最新提醒</div>
+              <div class="panel-body">
+                <!--警告框-->
+                <div class="alert alert-success">提示您的订单（2014001）已经审批通过！</div>
+                <div class="alert alert-danger">提示您的订单（2014002）被打回！</div>
+                <div class="alert alert-warning">提示您的订单（2013001）客户付款延迟！</div>
+              </div>
+            </div>
+          <div class="panel panel-primary" id="table">
+            <div class="panel-heading">最新订单</div>
+            <div class="panel-body">
+            <table class="table-striped table">
+              <tr>
+                <th>#</th>
+                <th>产品</th>
+                <th>数量</th>
+                <th>总金额</th>
+                <th>业务员</th>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>Apple Macbook air</td>
+                <td>10</td>
+                <td>80000</td>
+                <td>王小贱</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Apple iPad air</td>
+                <td>10</td>
+                <td>80000</td>
+                <td>王小贱</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Apple Macbook air</td>
+                <td>10</td>
+                <td>80000</td>
+                <td>王小贱</td>
+              </tr>
+            </table>
+            </div>
+            <p><a class="btn btn-primary" href="#" role="button">查看详细&raquo;</a></p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="panel panel-primary">
+            <div class="panel-heading">我的任务</div>
+            <div class="panel-body">
+              <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-info"><span class="badge">42</span>订单审批</a>
+                <a href="#" class="list-group-item list-group-item-warning"><span class="badge">20</span>订单审批</a>
+                <a href="#" class="list-group-item list-group-item-danger"><span class="badge">10</span>订单审批</a>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-primary">
+            <div class="panel-heading">工程进度</div>
+            <div class="panel-body">
+              <h3><span class="label label-primary ">水井挖掘工程</span></h3>
+              <div class="progress" >
+                <div class="progress-bar progress-bar-info" style="width:55%">55%</div>
+              </div>
+              <h3><span class="label label-primary">基建工程</span></h3>
+              <div class="progress" >
+                <div class="progress-bar progress-bar-danger" style="width:90%">90%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="jquery-3.1.1.js" type="text/javascript"></script>
+<script src="bootstrap.min.js" type="text/javascript"></script>
+</body>
+</html>
