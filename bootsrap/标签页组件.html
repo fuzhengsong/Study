@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>标签页组件</title>
+  <link href="bootstrap.min.css" rel="stylesheet">
+  <style>
+    .tab-pane h1{
+      font-size: 50px;
+      margin-top: 120px;
+      color:#528CE0;
+    }
+    .tab-pane p{
+      font-size: 28px;
+    }
+    .tab-pane img{
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+<!--class为nav-tabs-->
+<div class="container">
+<ul class="nav nav-tabs">
+  <!--data-toggle=tab 设置页面的切换-->
+  <li class="active"><a href="#Opera" data-toggle="tab">Opera</a></li>
+  <li><a href="#Chrome" data-toggle="tab">Chrome</a></li>
+  <li><a href="#Safari" data-toggle="tab">Safari</a></li>
+  <li><a href="#Firefox" data-toggle="tab">Firefox</a></li>
+  <li><a href="#IE" data-toggle="tab">IE</a></li>
+</ul>
+<div class="tab-content">
+  <div class="tab-pane active" id="Opera">
+    <div class="row">
+      <div class="col-md-7">
+        <h1>Opera<small>小众但易用</small></h1>
+        <p>Opera浏览器，是一款挪威Opera Software ASA公司制作的支持多页面标签式浏览的网络浏览器。 是跨平台浏览器可以在Windows、Mac和Linux三个操作系统平台上运行。.</p>
+      </div>
+      <div class="col-md-5">
+        <img class="img-responsive" src="images/opera-logo.jpg">
+      </div>
+    </div>
+  </div>
+  <div class="tab-pane" id="Chrome">
+   <div class="row">
+     <div class="col-md-5">
+       <img class="img-responsive" src="images/chrome-logo.jpg">
+     </div>
+     <div class="col-md-7">
+       <h1>Google Chrome<small>使用最广的浏览器</small></h1>
+       <p>Google Chrome，又称Google浏览器，是一个由Google（谷歌）公司开发的网页浏览器。 该浏览器是基于其他开源软件所撰写，包括WebKit，目标是提升稳定性、速度和安全性，并创造出简单且有效率的使用者界面。</p>
+     </div>
+    </div>
+  </div>
+  <div class="tab-pane" id="Safari">
+    <div class="row">
+      <div class="col-md-7">
+        <h1>Safari<small>Mac用户首选</small></h1>
+        <p>Safari，是苹果计算机的最新操作系统Mac OS X中的浏览器，使用了KDE的KHTML作为浏览器的运算核心。 Safari在2003年1月7日首度发行测试版，并成为Mac OS X v10.3与之后的默认浏览器，也是iPhone与IPAD和iPod touch的指定浏览器。</p>
+      </div>
+      <div class="col-md-5">
+        <img class="img-responsive" src="images/safari-logo.jpg">
+      </div>
+    </div>
+  </div>
+  <div class="tab-pane" id="Firefox">
+    <div class="row">
+      <div class="col-md-5">
+        <img class="img-responsive" src="images/firefox-logo.jpg">
+      </div>
+      <div class="col-md-7">
+        <h1>Mozilla Firefox <small>美丽的狐狸</small></h1>
+        <p>Mozilla Firefox，中文名通常称为“火狐”或“火狐浏览器”，是一个开源网页浏览器， 使用Gecko引擎（非ie内核），支持多种操作系统如Windows、Mac和linux。</p>
+      </div>
+    </div>
+  </div>
+  <div class="tab-pane" id="IE">
+    <div class="row">
+      <div class="col-md-7">
+        <h1>IE<small>你懂的</small></h1>
+        <p>Internet Explorer，原称Microsoft Internet Explorer(6版本以前)和Windows Internet Explorer(7，8，9，10版本)， 简称IE，是美国微软公司推出的一款网页浏览器。它采用的排版引擎(俗称内核)为Trident。</p>
+      </div>
+      <div class="col-md-5">
+        <img class="img-responsive" src="images/ie-logo.jpg">
+      </div>
+  </div>
+</div>
+</div>
+</div>
+
+<script src="jquery-3.1.1.js" type="text/javascript"></script>
+<script src="bootstrap.min.js" type="text/javascript"></script>
+</body>
+</html>
