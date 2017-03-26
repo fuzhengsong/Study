@@ -57,7 +57,7 @@
 </form>
 
 
-<h2>将form设置一个form-inline属性可以变成内联表格 ，比如：</h2>
+<h2>将form设置一个form-inline属性可以变成内联表单 ，比如：</h2>
 <form class="form-inline">
   <div class="form-group ">
     <label for="InputEmail1">Email address</label>
@@ -161,11 +161,38 @@ label的替代属性aria-label来设置</h2>
   </div>
 </form>
 
-
+<h2>校验状态 .has-success  .has-warning  .has-error状态添加到父元素中，那么子元素中有control-label form-control help-block类的
+元素都会有相应的样式</h2>
+<form>
 <div class="form-group has-success">
   <label class="control-label" for="inputSuccess1">Input with success</label>
   <input type="text" class="form-control" id="inputSuccess1" aria-describedby="helpBlock2">
   <span id="helpBlock2" class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
 </div>
+</form>
+
+
+<h2>添加额外的标签</h2>
+<form>
+  <div class="form-group has-success has-feedback">
+    <label class="control-label" for="inputSuccess2">Input with success</label>
+    <input type="text" class="form-control" id="inputSuccess2">
+    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+  </div>
+</form>
+
+
+<h2>控制尺寸</h2>
+<input type="text" class="form-control input-lg" placeholder="input-lg">
+<form>
+  <div class="form-group has-success has-feedback form-group-lg">
+    <label class="control-label" for="inputSuccess2">Input with success</label>
+    <input type="text" class="form-control" id="inputSuccess3">
+    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+  </div>
+</form>
+
+
+
 </body>
 </html>
