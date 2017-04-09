@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="blog.css" rel="stylesheet">
+    <title>博客前端</title>
+</head>
+<body>
+<header>
+    <div id="header">
+        <div id="header_logo">
+            <img src="images/logo.gif">
+        </div>
+        <div id="person_center">
+        <span>个人中心</span>
+            <ul>
+                <li><a>发文</a></li>
+                <li><a>换肤</a></li>
+                <li><a>帮助</a></li>
+                <li><a>退出</a></li>
+            </ul>
+        </div>
+        <div class="mes">
+            <span id="login">登录</span>
+            <span id="register">注册</span>
+        </div>
+    </div>
+
+</header>
+<div id="login_box">
+    <div class="login_header">
+        <h3>网站登录</h3><a class="close"><img src="images/close.png"></a>
+    </div>
+    <div class="login_body">
+        <form>
+            <label>账号：<input type="text" ></label>
+            <label>密码：<input type="text" ></label>
+            <div class="btn"></div>
+        </form>
+    </div>
+    <div class="login_footer">
+        <span>注册新用户|</span><span>忘记密码？</span>
+    </div>
+</div>
+<div class="screen"></div>
+<div id="reg">
+<div id="reg_header">
+    <h3>会员注册</h3><a><img src="images/close.png"></a>
+</div>
+    <div id="reg_body">
+        <form id="reg_form">
+            <div id="user">
+                <label ><span>用 户 名：</span><input type="text" name="user_name"></label>
+                <span class="info info_user">请输入2-20位字符，由数字，字母，下划线组成！</span>
+                <span class="error error_user">输入不合法，请重新输入！</span>
+                <span class="success success_user">可用</span>
+            </div>
+            <div id="pass">
+                <label><span>密    码：</span><input type="password" name="passWord"></label>
+                <span class="info info_pass">
+                    <a>密码强度: <span class="s s1">■</span><span class="s s2">■</span><span class="s s3">■</span><span class="s s4"></span></a>
+                    <a><span class="p p1">○</span> 6-20个字符</a>
+                    <a><span class="p p2">○</span> 只能包含字母大小写，数字和非空字符</a>
+                    <a><span class="p p3">○</span> 字母大小写，数字和非空字符2中以上</a>
+                    </span>
+                <span class="error error_pass">密码格式错误，请重新输入</span>
+                <span class="success success_pass"></span>
+            </div>
+            <div id="passAgain">
+                <label><span>密码确认：</span><input type="password" name="passAgain"></label>
+                <span class="info info_passAgain">请再次输入密码</span>
+                <span class="error error_passAgain">2次密码输入不同</span>
+                <span class="success success_passAgain">可用</span>
+            </div>
+            <div id="ques"><label><span>问    题：</span><select name="ques">
+                        <option>--请选择--</option>
+                        <option>最爱吃的菜</option>
+                        <option>最喜欢的狗</option>
+                        <option>您的生日</option>
+                        <option>您父亲的名字</option>
+                        </select></label>
+            </div>
+            <div id="answer">
+                <label><span>回    答：</span><input type="text" name="answer"></label>
+                <span class="info info_answer">请输入您的回答</span>
+                <span class="error error_answer">请输入回答！</span>
+            </div>
+            <div id="email">
+                <label><span>邮    箱：</span><input type="text" name="email" autocomplete="off"></label>
+                <ul class="dropdown-menu">
+                    <li><span></span>@163.com</li>
+                    <li><span></span>@qq.com</li>
+                    <li><span></span>@gmail.com</li>
+                    <li><span></span>@sina.com</li>
+                    <li><span></span>@sohu.com</li>
+                </ul>
+                <span class="info info_email">请输入您的电子邮件</span>
+                <span class="error error_email">电子邮件输入格式有误！</span>
+                <span class="success success_email">可用</span>
+            </div>
+            <div id="birthday">
+                <label ><span>生    日：</span><select name="year">
+                        <option>---</option>
+                        </select> 年
+                        <select name="month">
+                            <option>---</option>
+                        </select> 月
+                        <select name="day">
+                            <option>---</option>
+                        </select> 日</label>
+                <span class="error_birthday">请输入生日！</span>
+            </div>
+            <div id="ps">
+                <label><span style="vertical-align:85px;">备    注：</span><textarea class="ps"></textarea></label>
+                <p>还可以输入<strong>200</strong>个字</p>
+                <span class="error_ps">字数超过限定！</span>
+            </div>
+            <button type="button" id="submit" name="sub"></button>
+        </form>
+    </div>
+</div>
+
+<!--导航-->
+<nav>
+            <ul>
+            <li><a href="#">首页</a></li>
+            <li><a href="#">博文列表</a></li>
+            <li><a href="#">精彩相册</a></li>
+            <li><a href="#">动感音乐</a></li>
+            <li><a href="#">关于我</a></li>
+            </ul>
+             <div class="move"></div>
+</nav>
+
+<!--博文-->
+<section id="article">
+<div id="side_left">
+    <div class="article_nav">
+        <div class="article_nav_header"> <p>教育博文一</p></div>
+        <ul>
+            <li><a href="#">靠自己95 后女生被16 所国外名校录取</a></li>
+            <li><a href="#">00 后的成长烦恼：压力巨大成隐形杀手</a></li>
+            <li><a href="#">一年自学MIT 的33 门课? 疯狂学习方法</a></li>
+            <li><a href="#">申请赴美读研人数下降5% 7 年来首遇冷</a></li>
+            <li><a href="#">西政“萌招聘”秀出辣椒与美女被赞</a></li>
+        </ul>
+    </div>
+    <div class="article_nav">
+        <div class="article_nav_header"> <p>教育博文二</p></div>
+        <ul>
+            <li><a href="#">靠自己95 后女生被16 所国外名校录取</a></li>
+            <li><a href="#">00 后的成长烦恼：压力巨大成隐形杀手</a></li>
+            <li><a href="#">一年自学MIT 的33 门课? 疯狂学习方法</a></li>
+            <li><a href="#">申请赴美读研人数下降5% 7 年来首遇冷</a></li>
+            <li><a href="#">西政“萌招聘”秀出辣椒与美女被赞</a></li>
+        </ul>
+    </div>
+    <div class="article_nav">
+        <div class="article_nav_header"> <p>教育博文三</p></div>
+        <ul>
+            <li><a href="#">靠自己95 后女生被16 所国外名校录取</a></li>
+            <li><a href="#">00 后的成长烦恼：压力巨大成隐形杀手</a></li>
+            <li><a href="#">一年自学MIT 的33 门课? 疯狂学习方法</a></li>
+            <li><a href="#">申请赴美读研人数下降5% 7 年来首遇冷</a></li>
+            <li><a href="#">西政“萌招聘”秀出辣椒与美女被赞</a></li>
+        </ul>
+    </div>
+</div>
+
+    <div id="side_right">
+
+    </div>
+</section>
+
+<!--图片轮播-->
+<div class="banner">
+    <ul>
+        <li><a><img src="images/banner4.jpg"></a></li>
+        <li><a><img src="images/banner5.jpg"></a></li>
+        <li><a><img src="images/banner6.jpg"></a></li>
+        <li><a><img src="images/banner7.jpg"></a></li>
+    </ul>
+    <div class="nav">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+    </div>
+</div>
+
+<!--延时加载-->
+<div id="picture_list1">
+    <dl>
+        <dt><img xsrc="images/p1.jpg" src_big="images/p1big.jpg" src="images/wait_load.jpg"></dt>
+        <dd>延时加载的图片</dd>
+    </dl>
+    <dl>
+        <dt><img xsrc="images/p2.jpg" src_big="images/p2big.jpg" src="images/wait_load.jpg"></dt>
+        <dd>延时加载的图片</dd>
+    </dl>
+    <dl>
+        <dt><img xsrc="images/p3.jpg" src_big="images/p3big.jpg" src="images/wait_load.jpg"></dt>
+        <dd>延时加载的图片</dd>
+    </dl>
+    <dl>
+        <dt><img xsrc="images/p4.jpg" src_big="images/p4big.jpg" src="images/wait_load.jpg"></dt>
+        <dd>延时加载的图片</dd>
+    </dl>
+    <dl>
+        <dt><img xsrc="images/p5.jpg" src_big="images/p5big.jpg" src="images/wait_load.jpg"></dt>
+        <dd>延时加载的图片</dd>
+    </dl>
+    <dl>
+        <dt><img xsrc="images/p6.jpg" src_big="images/p6big.jpg" src="images/wait_load.jpg"></dt>
+        <dd>延时加载的图片</dd>
+    </dl>
+    <dl>
+        <dt><img xsrc="images/p7.jpg" src_big="images/p7big.jpg" src="images/wait_load.jpg"></dt>
+        <dd>延时加载的图片</dd>
+    </dl>
+    <dl>
+        <dt><img xsrc="images/p8.jpg" src_big="images/p8big.jpg" src="images/wait_load.jpg"></dt>
+        <dd>延时加载的图片</dd>
+    </dl>
+    <dl>
+        <dt><img xsrc="images/p9.jpg" src_big="images/p9big.jpg" src="images/wait_load.jpg"></dt>
+        <dd>延时加载的图片</dd>
+    </dl>
+    <dl>
+        <dt><img xsrc="images/p10.jpg" src_big="images/p10big.jpg" src="images/wait_load.jpg"></dt>
+        <dd>延时加载的图片</dd>
+    </dl>
+    <dl>
+        <dt><img xsrc="images/p11.jpg" src_big="images/p11big.jpg" src="images/wait_load.jpg"></dt>
+        <dd>延时加载的图片</dd>
+    </dl>
+    <dl>
+        <dt><img xsrc="images/p12.jpg" src_big="images/p12big.jpg" src="images/wait_load.jpg"></dt>
+        <dd>延时加载的图片</dd>
+    </dl>
+    <dl>
+        <dt><img xsrc="images/p1.jpg" src_big="images/p1big.jpg" src="images/wait_load.jpg"></dt>
+        <dd>延时加载的图片</dd>
+    </dl>
+    <dl>
+        <dt><img xsrc="images/p2.jpg" src_big="images/p2big.jpg" src="images/wait_load.jpg"></dt>
+        <dd>延时加载的图片</dd>
+    </dl>
+    <dl>
+        <dt><img xsrc="images/p3.jpg" src_big="images/p3big.jpg" src="images/wait_load.jpg"></dt>
+        <dd>延时加载的图片</dd>
+    </dl>
+
+    <!--图片放大-->
+
+    <div id="picture_list1_big">
+        <div class="picture_header">
+            <h3>图片查看</h3><a><img src="images/close.png"></a>
+        </div>
+        <div class="picture_body"  onselectstart="return false;" style="-moz-user-select:none;">
+            <img src="images/loading.gif">
+            <div class="toggle lt"><span>&lt;</span></div>
+            <div class="toggle gt"><span>&gt;</span></div>
+            <em class="index">1/12</em>
+        </div>
+
+    </div>
+</div>
+<script src="jquery.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
