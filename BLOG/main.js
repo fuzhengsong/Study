@@ -849,12 +849,7 @@ function  toggle_picture(index) {
 //图片查看大图
 
 picture_list1.find("dl dt img").click(function () {
-    var top=center(620,511).top;
-    var left=center(620,511).left;
-    picture_list1_big.css({
-        "top":top,
-        "left":left
-    }).slideDown(300);
+    picture_list1_big.center(620,511).slideDown(300);
     screen_on();
 
     //创建一个临时的图片对象
@@ -1111,13 +1106,12 @@ $("#article_btn").click(function () {
 function getBlog() {
     var slide_right=$("#side_right");
     slide_right.find(".blog_loading").show();
-    slide_right.html('');
+    slide_right.find(".side_body").html('');
     $.ajax({
         type: "POST",
         url: "get_blog.php",
         data:{},
         success: function (text) {
-            $("#side_right").find(".blog_loading").hide();
             var json=JSON.parse(text);
             //添加最新的三条博文
             for(var i=0;i<3;i++){
@@ -1133,7 +1127,8 @@ function getBlog() {
                 html+="<div class='myarticle_body'>"+content +"</div>";
                 html+="<div class='myarticle_footer'> <span>阅读全文&gt;&gt;</span></div>"
                 ele.append(html);
-                slide_right.append(ele);
+                slide_right.find(".blog_loading").hide();
+                slide_right.find(".side_body").append(ele);
                 $(ele).css({
                     "opacity":0,
                     "height":0
