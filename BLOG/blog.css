@@ -1,6 +1,7 @@
 body{
     padding:0;
     margin:0;
+    /*background: #E7E9E8 url(images/bg1.jpg) no-repeat;*/
 }
 header{
     width:100%;
@@ -9,6 +10,7 @@ header{
 }
 
 #header{
+    position: relative;
     width:1200px;
     height: 30px;
     margin:0 auto;
@@ -20,13 +22,34 @@ header{
 #header .mes,#header #person_center{
     position: relative;
 }
-#header .mes{
+#header #mes{
+    white-space:nowrap;
+    text-align: center;
+    display: none;
+    position: relative;
     font-size: 14px;
-    width:100px;
+    width:130px;
+    height: 30px;
+    line-height: 30px;
     top:-27px;
-    left:900px;
+    left:760px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#header #mes:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+#header .mes{
+    text-align: center;
+    font-size: 14px;
+    height: 30px;
+    width:130px;
+    top:-27px;
+    left:870px;
 }
 #header .mes span{
+    display: inline-block;
     cursor: pointer;
     margin:0 10px 0 0;
 }
@@ -113,16 +136,25 @@ header{
 
 #login_box .login_body label{
     display: block;
+}
+#login_box .login_body label:first-child{
     margin-top:20px;
+}
+#login_box .login_body .login_error_user{
+    display: block;
+    opacity: 0;
+    font-size: 14px;
+    padding:5px 0 3px 20px;
+    background: url(images/info_fail.png) no-repeat 85px 4px;
 }
 #login_box .login_body label input{
     height: 20px;
 }
-#login_box .btn{
+#login_box #login_btn{
     width:106px;
     height: 30px;
     background: url(images/login_button.png) left;
-    margin:30px 100px;
+    margin:25px 100px;
 }
 #login_box .login_footer{
     font-size: 14px;
@@ -156,7 +188,7 @@ header{
     margin:0;
     font-size: 16px;
 }
-#reg #reg_header a img{
+#reg #reg_header a img,#myarticle #myarticle_header a img{
     position: absolute;
     top:10px;
     left:570px;
@@ -184,13 +216,18 @@ header{
     height: 110px;
 }
 
-#reg_body form span.info,#reg_body form span.error{
+#reg_body form span.info,#reg_body form span.error,#reg_body form span.user_loading{
     box-sizing: border-box;
     font-size: 14px;
     display: block;
     position: absolute;
     top:-2px;
     left:300px;
+}
+#reg_body form span.user_loading{
+    display:none;
+    padding:6px 0 0 25px;
+    background: url(images/loading2.gif) no-repeat 5px 10px;
 }
 #reg_body form span.info{
     display: none;
@@ -363,11 +400,13 @@ section#article{
     margin:0 auto;
 }
 #side_left{
+
     width:300px;
     height: 750px;
     float:left;
 }
 #side_left .article_nav{
+    background: #fff;
     width:300px;
     margin-top:20px;
     border: 1px solid gainsboro;
@@ -408,12 +447,176 @@ section#article{
     color: #00b3ee;
 }
 #side_right{
+    position: relative;
     margin-top:20px;
     float:left;
     margin-left: 30px;
     width:870px;
     height: 750px;
-    background-color:#A9A9A9;
+}
+#side_right .blog_loading{
+    display: none;
+    position: absolute;
+    top:360px;
+    left:380px;
+    background: url(images/loading4.gif) no-repeat ;
+    width:100px;
+    height: 40px;
+}
+
+#side_right .myarticle{
+    top:0;
+    position: relative;
+    height: 240px;
+    width:860px;
+    margin-bottom:10px;
+    border:1px solid gainsboro;
+    background: #fff;
+}
+#side_right .myarticle .myarticle_header{
+    width:860px;
+    height: 30px;
+    background: url(images/header_bg.png) repeat-x;
+    border-bottom: 1px solid #999999;
+}
+#side_right .myarticle .myarticle_header h3{
+    font-size: 18px;
+    line-height: 30px;
+    margin:0;
+    text-indent: 30px;
+}
+#side_right .myarticle .myarticle_body{
+    text-indent: 2em;
+    box-sizing: border-box;
+    font-size: 15px;
+    height: 170px;
+    width:860px;
+    padding:10px;
+    line-height: 1.2em;
+    letter-spacing: 0.1em;
+}
+#side_right .myarticle .myarticle_footer{
+    box-sizing: border-box;
+    text-align: right;
+    padding:0 20px 0 0;
+    line-height: 40px;
+    height: 40px;
+    width:860px;
+    font-size: 16px;
+    color:DarkCyan ;
+}
+#side_right .myarticle .myarticle_footer span:hover{
+    color: DarkSlateGray ;
+    text-decoration: underline;
+    cursor: pointer;
+}
+#skin{
+    display: none;
+    width:630px;
+    height: 370px;
+    position: absolute;
+    border: 1px solid #000;
+    z-index:10;
+    background: #fff;
+}
+#skin #skin_header{
+    width:630px;
+    height: 40px;
+    background: url(images/login_header.png) repeat-x;
+    border-bottom: 1px solid #999999;
+    margin-bottom: 10px;
+}
+#skin #skin_header a img{
+    position: absolute;
+    top:10px;
+    left:600px;
+    cursor: pointer;
+}
+#skin #skin_body{
+    width:630px;
+    height: 300px;
+}
+#skin #skin_body a{
+    font-size: 14px;
+    width:200px;
+    height: 140px;
+    text-align: center;
+    float:left;
+    margin:0 0 20px 7px;
+}
+#skin #skin_body a:hover{
+    cursor: pointer;
+}
+#myarticle{
+    display: none;
+    width:600px;
+    height: 700px;
+    position: absolute;
+    border: 1px solid #000;
+    z-index:10;
+    background: #FBF7E1;
+}
+#myarticle #myarticle_header{
+    width:600px;
+    height: 40px;
+    background: url(images/login_header.png) repeat-x;
+    border-bottom: 1px solid #999999;
+}
+#myarticle #myarticle_header:hover,#skin #skin_header:hover{
+    cursor: move;
+}
+#myarticle #myarticle_header h3,#skin #skin_header h3{
+    font-size: 20px;
+    line-height: 40px;
+    margin:0;
+    text-align: center;
+}
+
+#myarticle #myarticle_body{
+    position: relative;
+    box-sizing: border-box;
+    width:600px;
+    height: 610px;
+    padding:10px;
+}
+#myarticle #myarticle_body .lab{
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
+    margin:20px 0 20px 0;
+}
+#myarticle #myarticle_body #title{
+    font-family: 微软雅黑;
+    font-size: 16px;
+    width:300px;
+    height: 25px;
+}
+#myarticle #myarticle_body .info_title{
+    opacity: 0;
+    position: absolute;
+    top:65px;
+    left:100px;
+    color:red;
+}
+#myarticle #myarticle_body #content{
+    font-size: 16px;
+    font-family: 微软雅黑;
+    letter-spacing: 0.1em;
+    width:570px;
+    height: 450px;
+}
+#myarticle #myarticle_footer{
+    width:600px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+#myarticle #myarticle_footer #article_btn{
+    display: inline-block;
+    background: url(images/blog_button.png) left ;
+    width:105px;
+    height: 30px;
+    overflow: hidden;
 }
 .clearFloat:after,.clearFloat:before{
     content: '';
@@ -463,8 +666,10 @@ section#article{
 }
 
 #picture_list1{
+    background-color: #fff;
     width:1200px;
-    margin:0 auto
+    height: 900px;
+    margin:0 auto;
 }
 #picture_list1 dl{
     margin:0;
@@ -580,4 +785,45 @@ section#article{
     top:430px;
     left:540px;
     color:#fff;
+}
+
+#reg_loading,#reg_success,#reg_fail,#login_loading,#login_success,#login_fail{
+    font-size: 14px;
+    display: none;
+    position: absolute;
+    top:40px;
+    left:0;
+    width:200px;
+    height:40px;
+    background: url(images/login_header.png);
+    z-index:10001;
+    line-height: 40px;
+}
+#reg_loading p,#login_loading p{
+    font-weight: bold;
+    text-indent: 90px;
+    margin:0;
+    padding:0;
+    background: url(images/loading3.gif) no-repeat 60px;
+}
+#reg_success p,#login_success p{
+    font-weight: bold;
+    text-indent: 90px;
+    margin:0;
+    padding:0;
+    background: url(images/success.gif) no-repeat 60px;
+}
+#reg_fail p{
+    font-weight: bold;
+    text-indent: 70px;
+    margin:0;
+    padding:0;
+    background: url(images/info_fail.png) no-repeat 40px;
+}
+#login_fail p{
+    font-weight: bold;
+    text-indent: 50px;
+    margin:0;
+    padding:0;
+    background: url(images/info_fail.png) no-repeat 20px;
 }

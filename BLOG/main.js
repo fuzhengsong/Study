@@ -5,13 +5,13 @@
 //跨浏览器获取视口大小
 
 function  getClient() {
-    if(window.innerWidth!=undefined){
+    if(window.innerWidth!==undefined){
         return {
             width:window.innerWidth,            //IE9+,FireFox,safari,Opera,Chrome
             height:window.innerHeight
         }
     }
-    else if(document.compatMode=="CSS1Compat") {    //IE8之前
+    else if(document.compatMode==="CSS1Compat") {    //IE8之前
         return {
             width: document.documentElement.clientWidth,
             height: document.documentElement.clientHeight
@@ -26,14 +26,17 @@ function  getClient() {
 
 //计算窗体视口居中位置的方法
 
-function center(width,height) {
+$.fn.center=function(width,height){
     var clientWidth=getClient().width;
     var clientHeight=getClient().height;
-    return{
-        top:(clientHeight-height)/2+$(document).scrollTop(),    //window.pageYOffset   document.documentElement.scrollTop
-        left:(clientWidth-width)/2+$(document).scrollLeft()      //window.pageXOffset
-    }
-}
+    var top=(clientHeight-height)/2+$(document).scrollTop();   //window.pageYOffset   document.documentElement.scrollTop
+    var left=(clientWidth-width)/2+$(document).scrollLeft()      //window.pageXOffset
+    $(this).css({
+        "top":top,
+        "left":left
+    });
+    return this;
+};
 
 //添加一个拖动的方法：
 //@param {[selector]} 传入拖动框内点击可以拖动的区域
@@ -200,12 +203,7 @@ function screen_off() {
 
 $("#login").click(function () {
     //登录窗口的大小为300 250
-    var top=center(300,250).top;
-    var left=center(300,250).left;
-   $("#login_box").css({
-                           "top":top,
-                           "left":left
-                       }).slideDown(300);
+   $("#login_box").center(300,250).slideDown(300);
     screen_on()
 });
 
@@ -243,12 +241,8 @@ $("#person_center").hover(function () {
 //注册框点击打开
 
 $("#register").click(function () {
-    var top=center(600,550).top;
-    var left=center(600,550).left;
-    $("#reg").css({
-        "top":top,
-        "left":left
-    }).slideDown(300);
+
+    $("#reg").center(600,550).slideDown(300);
     screen_on();
 });
 
@@ -256,7 +250,11 @@ $("#register").click(function () {
 var reg=$("#reg");
 reg.find("#reg_header a img").click(function () {
     $("#reg").hide();
-    screen_off()
+    screen_off();
+    document.getElementById("reg_form").reset();
+    $("#reg").find("span").filter(function () {
+        return ($(this).hasClass("info")||$(this).hasClass("error")||$(this).hasClass("success"))
+    }).hide();
 });
 
 //拖动注册框
@@ -294,11 +292,12 @@ var reg_form=document.getElementById("reg_form");
 var username= reg_form.elements["user_name"];
 var flag_user=true;
 $(username).focus(function () {
+    reg_body.find("span.has_user").hide();
     Focus('user');
 })
     .blur(function () {
-        var val=$(username).val();
-        if(val.trim()==''){
+        var val=$(username).val().trim();
+        if(val===''){
             Blur('user');
             flag_user=false;
         }
@@ -306,8 +305,33 @@ $(username).focus(function () {
             error('user');
             flag_user=false;
         }else{
-            success('user');
-            flag_user=true;
+            reg_body.find("span.info_user").css("display","none");
+            reg_body.find("span.user_loading").css("display","block");
+            setTimeout(function () {
+                $.ajax({
+                    type:'post',
+                    url:'is_user.php',
+                    data:$(username).serialize(),
+                    success:function (data) {
+                        if(data==="1"){
+                            reg_body.find("span.user_loading").hide();
+                            reg_body.find("span.has_user").show();
+                            flag_user=false;
+                        }else{
+                            reg_body.find("span.user_loading").hide();
+                            reg_body.find("span.success_user").show();
+                            flag_user=true;
+                        }
+                    },
+                    error:function (xhr){
+                        flag_user=false;
+                    },
+                    async:false
+                });
+            },30)
+
+
+
         }
     });
 
@@ -325,7 +349,7 @@ userPassword.focus(function () {
         var val=userPassword.val();
 
         //失去焦点，如果没有内容则不提示
-        if(val.trim()==''){
+        if(val.trim()===''){
             Blur('pass');
             flag_pas=false;
         }
@@ -356,7 +380,7 @@ userPassword.keyup(function () {
     }
 
     //密码字符验证
-    if(/[^(\da-zA-Z)]/.test(val)||val.length==0){
+    if(/[^(\da-zA-Z)]/.test(val)||val.length===0){
         reg_body.find("span.info_pass .p2").html("○").css("color","#ccc");
     }else{
         reg_body.find("span.info_pass .p2").html("●").css("color","green");
@@ -410,11 +434,11 @@ $(userPasswordA).focus(function () {
 })
     .blur(function () {
         var val=$(userPasswordA).val();
-        if(val.trim()==''){
+        if(val.trim()===''){
             Blur('passAgain');
             flag_pasA=false;
         }
-        else if(val.trim()==userPassword.val().trim()){
+        else if(val.trim()===userPassword.val().trim()){
             success('passAgain');
             flag_pasA=true;
         }else{
@@ -433,7 +457,7 @@ $(answer).focus(function () {
     Focus('answer')
 }).blur(function () {
     var val=$(answer).val();
-    if(val.trim()==''){
+    if(val.trim()===''){
         Blur('answer');
         flag_answer=false;
     }else{
@@ -450,17 +474,17 @@ var flag_email=true;
 $(email).focus(function () {
     Focus("email");
     //获得焦点时，如果为空则隐藏菜单
-    if($(email).val().trim()==''){
+    if($(email).val().trim()===''){
         dropdownmenu.hide()
     }
     //如果存在@符号，则隐藏菜单，没有则显示
-    else if($(email).val().indexOf('@')==-1){
+    else if($(email).val().indexOf('@')===-1){
         dropdownmenu.show()
     }
     $(".dropdown-menu li").css("backgroundColor",'white');
 }).blur(function () {
     var val=$(email).val();
-    if(val.trim()==''){
+    if(val.trim()===''){
         Blur('email');
         flag_email=false;
     }else if(/^[0-9a-zA-Z-_]+[\.0-9a-zA-Z-_]*@[0-9a-zA-Z-_]+(\.[a-zA-Z-_]{2,4}){1,3}$/.test(val)){
@@ -480,21 +504,21 @@ $(email).focus(function () {
     var val=$(email).val();
 
     //如果有@符号，则隐藏菜单
-    if(val.indexOf('@')==-1) {
+    if(val.indexOf('@')===-1) {
         $(".dropdown-menu li span").html(val);
     }else{
         dropdownmenu.hide();
     }
     //如果为空，隐藏菜单
-    if(val.trim()==''){
+    if(val.trim()===''){
         dropdownmenu.hide();
     }
     var li=$(".dropdown-menu li");
     li.css("backgroundColor",'white');
     //按下向下键
-    if(event.keyCode==40){
+    if(event.keyCode===40){
         //没有定义或者大于等于最后一个索引值时，选中第一个
-        if(this.i==undefined||this.i>=li.length-1){     //this.i记录当前选择li的索引值
+        if(this.i===undefined||this.i>=li.length-1){     //this.i记录当前选择li的索引值
             this.i=0;
         }else{
             this.i++
@@ -503,9 +527,9 @@ $(email).focus(function () {
     }
 
     //按下向上键
-    if(event.keyCode==38){
+    if(event.keyCode===38){
         //没有定义或者等于第一个索引值时，选中最后一个
-        if(this.i==undefined||this.i==0){
+        if(this.i===undefined||this.i===0){
             this.i=li.length-1;
         }else{
             this.i--
@@ -514,7 +538,7 @@ $(email).focus(function () {
     }
 
     //按下确定键
-    if(event.keyCode==13){
+    if(event.keyCode===13){
         $(email).val(li.eq(this.i).text());
         dropdownmenu.hide();         //下拉菜单消失
         this.i=undefined;                           //this.i重置为undefined
@@ -523,7 +547,7 @@ $(email).focus(function () {
 });
 $(".dropdown-menu li").mouseover(function (e) {
     $(".dropdown-menu li").css("backgroundColor",'white');
-    if(e.target.tagName.toLowerCase()=="li"){
+    if(e.target.tagName.toLowerCase()==="li"){
     $(e.target).css("backgroundColor",'#A9A9A9');
     }else{
         $(e.target).parent("li").css("backgroundColor",'#A9A9A9');
@@ -569,21 +593,21 @@ function  addDay() {
     var arr2 = ['04', '06', '09', '11'];
 
     //判断大小月
-    if (arr1.indexOf(val) != -1) {
+    if (arr1.indexOf(val) !== -1) {
         day.html(addNumber(31));
-    } else if (arr2.indexOf(val) != -1) {
+    } else if (arr2.indexOf(val) !== -1) {
         day.html(addNumber(30));
-    } else if (year.val() =='---') {
+    } else if (year.val() ==='---') {
         alert("请先选择年份！")
 
     //是否是闰年
-    } else if (year.val() % 400 == 0 || (year.val() % 4 == 0 && year.val() % 100 != 0)) {
+    } else if (year.val() % 400 === 0 || (year.val() % 4 === 0 && year.val() % 100 !== 0)) {
         day.html(addNumber(29));
     } else {
         day.html(addNumber(28));
     }
     //如果日期存在，则隐藏错误提示（提交后会有错误提示）
-    flag_birthday=(year.val()!='---'&&month.val()!='---'&&day.val()!='---');
+    flag_birthday=(year.val()!=='---'&&month.val()!=='---'&&day.val()!=='---');
     if(flag_birthday){
         reg_body.find("span.error_birthday").hide();
     }
@@ -594,7 +618,7 @@ function  addDay() {
 year.on("change",addDay);
 month.on("change",addDay);
 day.on("change",function () {
-    flag_birthday=(year.val()!='---'&&month.val()!='---'&&day.val()!='---');
+    flag_birthday=(year.val()!=='---'&&month.val()!=='---'&&day.val()!=='---');
     if(flag_birthday){
         reg_body.find("span.error_birthday").hide();
     }
@@ -642,8 +666,8 @@ textarea.keyup(function () {
 //阻止事件对象
 
 function preDefault(e) {
-    var event=e||window.event
-    if(typeof event.preventDefault!="undefined"){       //W3C
+    var event=e||window.event;
+    if(typeof event.preventDefault!=="undefined"){       //W3C
         event.preventDefault();
     }
     else{                             //IE
@@ -678,18 +702,57 @@ $("#submit").on("click",function (e) {
         error('ps');
     }
     if(flag_user&&flag_pas&&flag_pasA&&flag_answer&&flag_email&&flag_birthday&&flag_ps){
-        reg_form.submit();
-     $.ajax({
-        type:"POST",
-         url:"add.php",
-         data:reg_form.serialize(),
-         success:function (text) {
-             if(text==1){
-                 alert("成功注册！")
-             }
-         },
-         async:true
-     })
+        // reg_form.submit();
+        $("#submit").attr("disabled",true).css({
+            "backgroundPosition":"right"
+        });
+     $("#reg_loading").center(200,40).show().find("p").text("正在注册");
+        setTimeout(function(){
+            $.ajax({
+                type: "POST",
+                url: "add.php",
+                data: reg_form.serialize(),
+
+                success: function (text) {
+                    if (text ==="1") {
+                        $("#reg_loading").hide();
+                        $("#reg_success").center(200, 40).show().find("p").text("注册成功！");
+                        setCookie("user",reg_form.find("[name='user_name']").val());
+                        setTimeout(function () {
+                            $("#reg_success").hide();
+                            $("#reg").hide();
+                            screen_off();
+                            reg_body.find("span.success").hide();
+                            document.getElementById("reg_form").reset();
+                            $("#submit").attr("disabled", false).css({
+                                "backgroundPosition": "left"
+                            });
+                            $("#header").find('.mes').css("display","none");
+                            var user_name=getCookie('user');
+                            $("#header").find('#mes').html("<span>您好！"+user_name+'</span>').css({
+                                "display":"block",
+                                "color":"DarkGoldenRod"
+                            });
+                        }, 1500)
+                    }
+                },
+                error:function (xhr) {
+                    if(xhr.status===404){
+                        $("#reg_loading").hide();
+                        $("#reg_fail").center(200, 40).show().find("p").text("注册失败！");
+                            setTimeout(function () {
+                                $("#reg_fail").hide();
+                                $("#submit").attr("disabled", false).css({
+                                    "backgroundPosition": "left"
+                                });
+                            }, 1500)
+                    }
+                },
+                async: true
+            });
+        },40)
+
+
     }else{
         preDefault(e)
     }
@@ -762,11 +825,11 @@ function  toggle_picture(index) {
     var index_prev=index-1;
     var index_next=index+1;
     //如果为第一张图片，则获得图片列表中的最后一张
-    if(index==0){
+    if(index===0){
         prev_img.src=picture_list1.find("dl").eq(img_length-1).find("img").attr("src_big");
         index_prev=img_length-1;
     }
-    if(index==img_length-1){
+    if(index===img_length-1){
         next_img.src=picture_list1.find("dl").eq(0).find("img").attr("src_big");
         index_next=0;
     }
@@ -857,4 +920,311 @@ picture_list1_big.find(".picture_header a img").click(function () {
 
 //拖动大图
 picture_list1_big.drag(".picture_header").size();
+
+
+//用户登录验证
+var login_form=$("#login_form");
+function  check_username() {
+    var val=login_form.find("[name='user_name']").val().trim();
+    if(val===''){
+        return false;
+    }else if(/[^(\da-zA-Z_)]/.test(val)||val.length<2||val.length>20) {
+        $(".login_error_user").css("opacity", 1);
+        return false
+    }else{
+        return true;
+    }
+}
+login_form.find("[name='user_name']").blur(function () {
+    check_username()
+    
+}).focus(function(){
+    $(".login_error_user").css("opacity",0);
+});
+
+$("#login_btn").click(function(){
+    if(check_username()){
+        $("#login_btn").attr("disabled",true).css({
+            "backgroundPosition":"right"
+        });
+        $("#login_loading").center(200,40).show();
+        $.ajax({
+            type:"POST",
+            url:'is_login.php',
+            data:login_form.serialize(),
+            success:function (text) {
+                //登录成功
+                if (text ==="0") {
+                    $("#login_loading").hide();
+                    $("#login_success").center(200, 40).show();
+                    setCookie("user",login_form.find("[name='user_name']").val());
+                    setTimeout(function () {
+                        $("#login_success").hide();
+                        $("#login_box").hide();
+                        screen_off();
+                        document.getElementById("login_form").reset();
+                        $("#login_btn").attr("disabled", false).css({
+                            "backgroundPosition": "left"
+                        });
+                        $("#header").find('.mes').css("display","none");
+                        var user_name=getCookie('user');
+                        $("#header").find('#mes').html("<span>您好！"+user_name+'</span>').css({
+                            "display":"block",
+                            "color":"DarkGoldenRod"
+                        });
+                    }, 1500)
+
+                    //登录失败
+                }else if(text==="1"){
+                    $("#login_loading").hide();
+                    $("#login_fail").center(200, 40).show();
+                    setTimeout(function () {
+                        $("#login_fail").hide();
+                        $("#login_btn").attr("disabled", false).css({
+                            "backgroundPosition": "left"
+                        });
+                    }, 1500)
+                }
+            },
+            // error:function (xhr) {
+            //     if(xhr.status===404){
+            //         $("#reg_loading").hide();
+            //         $("#reg_fail").center(200, 40).show();
+            //         setTimeout(function () {
+            //             $("#reg_fail").hide();
+            //             $("#submit").attr("disabled", false).css({
+            //                 "backgroundPosition": "left"
+            //             });
+            //         }, 1500)
+            //     }
+            // },
+            async: true
+        })
+
+        }
+    });
+//570
+
+//弹出发表文章的框
+var myarticle=$("#myarticle");
+$("#person_center").on("click","#Publish",function () {
+    // if($("#header").find('#mes').css("display")==='none'){
+    //     alert("请先登录！");
+    //     return false;
+    // }
+    myarticle.center(600,700).slideDown(300);
+});
+
+//关闭
+myarticle.find("#myarticle_header a img").click(function () {
+    myarticle.hide();
+});
+myarticle.drag("#myarticle_header").size();
+
+myarticle.find("#title").focus(function () {
+    myarticle.find('.info_title').css("opacity",0);
+});
+myarticle.find("#content").keydown(function (event) {
+    var e=event||window.event;
+    //阻止tab键的默认切换焦点，并且添加空格
+    if(e.keyCode===9){
+        e.preventDefault();
+        //this=document.getElementById("content");
+        var s = this.selectionStart;
+        this.value = this.value.substring(0,this.selectionStart) +"\t" + this.value. substring(this.selectionEnd);               this.selectionEnd = s+1;
+    }
+});
+
+//点击发表
+$("#article_btn").click(function () {
+    if(myarticle.find("#title").val().trim()===''){
+        myarticle.find('.info_title').css("opacity",0).animate({
+            "opacity":1
+        },500);
+        return false;
+    }
+    if(myarticle.find("#content").val().trim()===''){
+        myarticle.find("#content").val('写点啥吧...');
+        return false;
+    }
+    $("#submit").attr("disabled",true).css({
+        "backgroundPosition":"right"
+    });
+    var html='';
+    var ele=$('<div class="myarticle"></div>');
+    html+="<div class='myarticle_header'><h3>"+ myarticle.find("#title").val()+"</h3></div>";
+    html+="<div class='myarticle_body'>"+myarticle.find("#content").val() +"</div>";
+    html+="<div class='myarticle_footer'> <span>阅读全文&gt;&gt;</span></div>";
+    ele.append(html);
+    $("#reg_loading").center(200,40).show().find("p").text("正在发表..");
+    $.ajax({
+        type: "POST",
+        url: "add_blog.php",
+        data: $("#myarticle_form").serialize(),
+        success: function (text) {
+            if (text ==="1") {
+                $("#reg_loading").hide();
+                $("#reg_success").center(200, 40).show().find("p").text("发表成功！");
+                setTimeout(function () {
+                    $("#reg_success").hide();
+                    myarticle.hide();
+                    document.getElementById("myarticle_form").reset();
+                    $("#myarticle_btn").attr("disabled", false).css({
+                        "backgroundPosition": "left"
+                    });
+                    $("#side_right").find(".myarticle").eq(2).animate({
+                        "opacity":0,
+                        "height":0
+                    },500,function () {
+                        $(this).hide()
+                    });
+                    $("#side_right").prepend(ele);
+                    $(ele).css({
+                        "opacity":0,
+                        "height":0
+                    }).animate({
+                        "opacity":1,
+                        "height":"240px"
+                    },500);
+
+                }, 1500);
+
+            }
+        },
+        error:function (xhr) {
+            if(xhr.status===404){
+                $("#reg_loading").hide();
+                $("#reg_fail").center(200, 40).show().find("p").text("发表失败！");
+                setTimeout(function () {
+                    $("#reg_fail").hide();
+                    $("#myarticle_btn").attr("disabled", false).css({
+                        "backgroundPosition": "left"
+                    });
+                }, 1500)
+            }
+        },
+        async: true
+    });
+});
+
+//从数据库获取博文列表
+function getBlog() {
+    var slide_right=$("#side_right");
+    slide_right.find(".blog_loading").show();
+    slide_right.html('');
+    $.ajax({
+        type: "POST",
+        url: "get_blog.php",
+        data:{},
+        success: function (text) {
+            $("#side_right").find(".blog_loading").hide();
+            var json=JSON.parse(text);
+            //添加最新的三条博文
+            for(var i=0;i<3;i++){
+                var content_length=json[i].content.length;
+                if(content_length>470){
+                    var content=json[i].content.substring(0,470)+"...";
+                }else{
+                    content=json[i].content;
+                }
+                var html='';
+                var ele=$('<div class="myarticle"></div>');
+                html+="<div class='myarticle_header'><h3>"+ json[i].title+"</h3></div>";
+                html+="<div class='myarticle_body'>"+content +"</div>";
+                html+="<div class='myarticle_footer'> <span>阅读全文&gt;&gt;</span></div>"
+                ele.append(html);
+                slide_right.append(ele);
+                $(ele).css({
+                    "opacity":0,
+                    "height":0
+                }).animate({
+                    "opacity":1,
+                    "height":"240px"
+                },500);
+             /*   slide_right.append('<div class="myarticle"></div>');
+
+                slide_right.find(".myarticle:last-child").append("<div class='myarticle_header'><h3>"+ json[i].title+"</h3></div>").append("<div class='myarticle_body'>"+content +"</div>").append("<div class='myarticle_footer'> <span>阅读全文&gt;&gt;</span></div>").slideDown(300);*/
+            }
+        }
+    });
+}
+getBlog();
+
+
+//更换皮肤
+
+var skin=$("#skin");
+$("#person_center").on("click","#changeSkin",function () {
+    // if($("#header").find('#mes').css("display")==='none'){
+    //     alert("请先登录！");
+    //     return false;
+    // } <a href="#"><img src="images/small_bg1.png" alt=""></a>
+    skin.center(600,370).fadeIn(300);
+    $.ajax({
+        type: "POST",
+        url: "get_skin.php",
+        data:{
+            type:"all"
+        },
+        success: function (text) {
+            var json=JSON.parse(text);
+            var html='';
+            for(var i=0;i<6;i++){
+               html+='<a><img src="images/'+json[i].small_bg +'" big_bg="'+json[i].big_bg +'" bg_color="'+ json[i].bg_color+'"><span>'+json[i].bg_text+'</span></a>'
+            }
+            skin.find("#skin_body").html(html).css("opacity",0).animate({
+                "opacity":1
+            },500);
+        }
+    });
+
+    //选择皮肤，并更新到数据库
+    skin.find("#skin_body ").on("click","a img",function () {
+        var that=this;
+        $("body").css({
+            "background":$(that).attr("bg_color")+' '+'url(images/'+$(that).attr('big_bg') +')'
+        });
+        $.ajax({
+            type: "POST",
+            url: "get_skin.php",
+            data:{
+                type:"set",
+                big_bg:$(that).attr('big_bg')
+            },
+            success: function (text) {
+               if(text==="1"){
+                   $("#reg_success").center(200, 40).show().find("p").text("更换成功！");
+               }
+               setTimeout(function () {
+                   $("#reg_success").hide()
+               },1000);
+            }
+        });
+    })
+
+});
+
+//关闭
+skin.find("#skin_header a img").click(function () {
+    skin.hide();
+});
+skin.drag("#skin_header").size();
+
+
+//设置默认背景颜色
+$.ajax({
+    type: "POST",
+    url: "get_skin.php",
+    data:{
+        type:"main"
+    },
+    success: function (text) {
+        var json=JSON.parse(text);
+        $("body").css({
+            "background":json.bg_color+' '+'url(images/'+json.big_bg +')'
+        });
+        }
+
+});
+
 

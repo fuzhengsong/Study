@@ -12,10 +12,10 @@
             <img src="images/logo.gif">
         </div>
         <div id="person_center">
-        <span>个人中心</span>
+            <span>个人中心</span>
             <ul>
-                <li><a>发文</a></li>
-                <li><a>换肤</a></li>
+                <li id="Publish"><a>发文</a></li>
+                <li id="changeSkin"><a>换肤</a></li>
                 <li><a>帮助</a></li>
                 <li><a>退出</a></li>
             </ul>
@@ -24,6 +24,7 @@
             <span id="login">登录</span>
             <span id="register">注册</span>
         </div>
+        <div id="mes">你好，XXXX</div>
     </div>
 
 </header>
@@ -32,10 +33,11 @@
         <h3>网站登录</h3><a class="close"><img src="images/close.png"></a>
     </div>
     <div class="login_body">
-        <form>
-            <label>账号：<input type="text" ></label>
-            <label>密码：<input type="text" ></label>
-            <div class="btn"></div>
+        <form id="login_form">
+            <label>账号：<input type="text" name="user_name"></label>
+            <span class="login_error_user">用户名格式有误！</span>
+            <label>密码：<input type="password" name="passWord"></label>
+            <button type="button" id="login_btn" name="login"></button>
         </form>
     </div>
     <div class="login_footer">
@@ -44,21 +46,24 @@
 </div>
 <div class="screen"></div>
 <div id="reg">
-<div id="reg_header">
-    <h3>会员注册</h3><a><img src="images/close.png"></a>
-</div>
+    <div id="reg_header">
+        <h3>会员注册</h3><a><img src="images/close.png"></a>
+    </div>
     <div id="reg_body">
         <form id="reg_form">
             <div id="user">
-                <label ><span>用 户 名：</span><input type="text" name="user_name"></label>
+                <label><span>用 户 名：</span><input type="text" name="user_name" autocomplete="off"></label>
                 <span class="info info_user">请输入2-20位字符，由数字，字母，下划线组成！</span>
                 <span class="error error_user">输入不合法，请重新输入！</span>
                 <span class="success success_user">可用</span>
+                <span class="user_loading">正在检测用户名</span>
+                <span class="error has_user">用户名已存在！</span>
             </div>
             <div id="pass">
-                <label><span>密    码：</span><input type="password" name="passWord"></label>
+                <label><span>密    码：</span><input type="password" name="passWord" autocomplete="off"></label>
                 <span class="info info_pass">
-                    <a>密码强度: <span class="s s1">■</span><span class="s s2">■</span><span class="s s3">■</span><span class="s s4"></span></a>
+                    <a>密码强度: <span class="s s1">■</span><span class="s s2">■</span><span class="s s3">■</span><span
+                            class="s s4"></span></a>
                     <a><span class="p p1">○</span> 6-20个字符</a>
                     <a><span class="p p2">○</span> 只能包含字母大小写，数字和非空字符</a>
                     <a><span class="p p3">○</span> 字母大小写，数字和非空字符2中以上</a>
@@ -67,21 +72,21 @@
                 <span class="success success_pass"></span>
             </div>
             <div id="passAgain">
-                <label><span>密码确认：</span><input type="password" name="passAgain"></label>
+                <label><span>密码确认：</span><input type="password" name="passAgain" autocomplete="off"></label>
                 <span class="info info_passAgain">请再次输入密码</span>
                 <span class="error error_passAgain">2次密码输入不同</span>
                 <span class="success success_passAgain">可用</span>
             </div>
             <div id="ques"><label><span>问    题：</span><select name="ques">
-                        <option>--请选择--</option>
-                        <option>最爱吃的菜</option>
-                        <option>最喜欢的狗</option>
-                        <option>您的生日</option>
-                        <option>您父亲的名字</option>
-                        </select></label>
+                <option>--请选择--</option>
+                <option>最爱吃的菜</option>
+                <option>最喜欢的狗</option>
+                <option>您的生日</option>
+                <option>您父亲的名字</option>
+            </select></label>
             </div>
             <div id="answer">
-                <label><span>回    答：</span><input type="text" name="answer"></label>
+                <label><span>回    答：</span><input type="text" name="answer" autocomplete="off"></label>
                 <span class="info info_answer">请输入您的回答</span>
                 <span class="error error_answer">请输入回答！</span>
             </div>
@@ -99,19 +104,20 @@
                 <span class="success success_email">可用</span>
             </div>
             <div id="birthday">
-                <label ><span>生    日：</span><select name="year">
+                <label><span>生    日：</span><select name="year">
+                    <option>---</option>
+                </select> 年
+                    <select name="month">
                         <option>---</option>
-                        </select> 年
-                        <select name="month">
-                            <option>---</option>
-                        </select> 月
-                        <select name="day">
-                            <option>---</option>
-                        </select> 日</label>
+                    </select> 月
+                    <select name="day">
+                        <option>---</option>
+                    </select> 日</label>
                 <span class="error_birthday">请输入生日！</span>
             </div>
             <div id="ps">
-                <label><span style="vertical-align:85px;">备    注：</span><textarea class="ps"></textarea></label>
+                <label><span style="vertical-align:85px;">备    注：</span><textarea class="ps"
+                                                                                  name="ps"></textarea></label>
                 <p>还可以输入<strong>200</strong>个字</p>
                 <span class="error_ps">字数超过限定！</span>
             </div>
@@ -122,56 +128,81 @@
 
 <!--导航-->
 <nav>
-            <ul>
-            <li><a href="#">首页</a></li>
-            <li><a href="#">博文列表</a></li>
-            <li><a href="#">精彩相册</a></li>
-            <li><a href="#">动感音乐</a></li>
-            <li><a href="#">关于我</a></li>
-            </ul>
-             <div class="move"></div>
+    <ul>
+        <li><a href="#">首页</a></li>
+        <li><a href="#">博文列表</a></li>
+        <li><a href="#">精彩相册</a></li>
+        <li><a href="#">动感音乐</a></li>
+        <li><a href="#">关于我</a></li>
+    </ul>
+    <div class="move"></div>
 </nav>
 
 <!--博文-->
 <section id="article">
-<div id="side_left">
-    <div class="article_nav">
-        <div class="article_nav_header"> <p>教育博文一</p></div>
-        <ul>
-            <li><a href="#">靠自己95 后女生被16 所国外名校录取</a></li>
-            <li><a href="#">00 后的成长烦恼：压力巨大成隐形杀手</a></li>
-            <li><a href="#">一年自学MIT 的33 门课? 疯狂学习方法</a></li>
-            <li><a href="#">申请赴美读研人数下降5% 7 年来首遇冷</a></li>
-            <li><a href="#">西政“萌招聘”秀出辣椒与美女被赞</a></li>
-        </ul>
+    <div id="side_left">
+        <div class="article_nav">
+            <div class="article_nav_header"><p>教育博文一</p></div>
+            <ul>
+                <li><a href="#">靠自己95 后女生被16 所国外名校录取</a></li>
+                <li><a href="#">00 后的成长烦恼：压力巨大成隐形杀手</a></li>
+                <li><a href="#">一年自学MIT 的33 门课? 疯狂学习方法</a></li>
+                <li><a href="#">申请赴美读研人数下降5% 7 年来首遇冷</a></li>
+                <li><a href="#">西政“萌招聘”秀出辣椒与美女被赞</a></li>
+            </ul>
+        </div>
+        <div class="article_nav">
+            <div class="article_nav_header"><p>教育博文二</p></div>
+            <ul>
+                <li><a href="#">靠自己95 后女生被16 所国外名校录取</a></li>
+                <li><a href="#">00 后的成长烦恼：压力巨大成隐形杀手</a></li>
+                <li><a href="#">一年自学MIT 的33 门课? 疯狂学习方法</a></li>
+                <li><a href="#">申请赴美读研人数下降5% 7 年来首遇冷</a></li>
+                <li><a href="#">西政“萌招聘”秀出辣椒与美女被赞</a></li>
+            </ul>
+        </div>
+        <div class="article_nav">
+            <div class="article_nav_header"><p>教育博文三</p></div>
+            <ul>
+                <li><a href="#">靠自己95 后女生被16 所国外名校录取</a></li>
+                <li><a href="#">00 后的成长烦恼：压力巨大成隐形杀手</a></li>
+                <li><a href="#">一年自学MIT 的33 门课? 疯狂学习方法</a></li>
+                <li><a href="#">申请赴美读研人数下降5% 7 年来首遇冷</a></li>
+                <li><a href="#">西政“萌招聘”秀出辣椒与美女被赞</a></li>
+            </ul>
+        </div>
     </div>
-    <div class="article_nav">
-        <div class="article_nav_header"> <p>教育博文二</p></div>
-        <ul>
-            <li><a href="#">靠自己95 后女生被16 所国外名校录取</a></li>
-            <li><a href="#">00 后的成长烦恼：压力巨大成隐形杀手</a></li>
-            <li><a href="#">一年自学MIT 的33 门课? 疯狂学习方法</a></li>
-            <li><a href="#">申请赴美读研人数下降5% 7 年来首遇冷</a></li>
-            <li><a href="#">西政“萌招聘”秀出辣椒与美女被赞</a></li>
-        </ul>
-    </div>
-    <div class="article_nav">
-        <div class="article_nav_header"> <p>教育博文三</p></div>
-        <ul>
-            <li><a href="#">靠自己95 后女生被16 所国外名校录取</a></li>
-            <li><a href="#">00 后的成长烦恼：压力巨大成隐形杀手</a></li>
-            <li><a href="#">一年自学MIT 的33 门课? 疯狂学习方法</a></li>
-            <li><a href="#">申请赴美读研人数下降5% 7 年来首遇冷</a></li>
-            <li><a href="#">西政“萌招聘”秀出辣椒与美女被赞</a></li>
-        </ul>
-    </div>
-</div>
 
     <div id="side_right">
+        <div class="blog_loading"></div>
+    </div>
+
+</section>
+<div id="myarticle">
+    <div id="myarticle_header">
+        <h3>发表博文</h3><a class="close"><img src="images/close.png"></a>
+    </div>
+    <div id="myarticle_body">
+        <form id="myarticle_form">
+            <label for="title" class="lab">博文标题:</label>
+            <input type="text" id="title" name="title"><span>(*不可为空 )</span><br>
+            <span class=" info_title">标题不能为空！</span>
+            <label for="content" class="lab">正文:</label><span>(*不可为空 )</span><br>
+            <textarea id="content" name="content"></textarea>
+        </form>
+    </div>
+    <div id="myarticle_footer">
+        <button type="button" id="article_btn"></button>
+    </div>
+</div>
+<div id="skin">
+    <div id="skin_header">
+        <h3>更换皮肤</h3><a class="close"><img src="images/close.png"></a>
+    </div>
+    <div id="skin_body">
 
     </div>
-</section>
-
+</div>
 <!--图片轮播-->
 <div class="banner">
     <ul>
@@ -257,7 +288,7 @@
         <div class="picture_header">
             <h3>图片查看</h3><a><img src="images/close.png"></a>
         </div>
-        <div class="picture_body"  onselectstart="return false;" style="-moz-user-select:none;">
+        <div class="picture_body" onselectstart="return false;" style="-moz-user-select:none;">
             <img src="images/loading.gif">
             <div class="toggle lt"><span>&lt;</span></div>
             <div class="toggle gt"><span>&gt;</span></div>
@@ -266,7 +297,34 @@
 
     </div>
 </div>
+
+<!--提交注册-->
+<div id="reg_loading">
+    <p>正在注册</p>
+</div>
+
+<div id="reg_success">
+    <p>注册成功！</p>
+</div>
+<div id="reg_fail">
+    <p>注册失败！</p>
+</div>
+
+<!--提交登录-->
+
+<div id="login_loading">
+    <p>正在登录</p>
+</div>
+<div id="login_success">
+    <p>登录成功！</p>
+</div>
+<div id="login_fail">
+    <p>用户名或者密码有误！</p>
+</div>
+
 <script src="jquery.js"></script>
+<script src="cookie.js"></script>
 <script src="main.js"></script>
+
 </body>
 </html>
