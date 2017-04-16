@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变化检测问题</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+
+<div id="app1">
+    <p>{{a}}</p>
+    <p>{{b.b}}</p>
+    <p>{{c}}</p>
+</div>
+<script>
+
+    var vm=new Vue({
+        el:"#app1",
+        data:{
+            a:'我是a!',
+            b:{
+
+            }
+
+        }
+    });
+//    vm代理data
+    Vue.set(vm.data,'c','111');//无法在根级上添加c
+    Vue.set(vm.b,'b','111');   //采用全局Vue.set 可以在data中的b对象中添加一个b属性
+    vm.$set(vm.b,'b','222')     //采用vm.$set也可以添加
+</script>
+</body>
+</html>
