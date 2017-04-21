@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>滚动页面</title>
+  <style>
+    body{
+
+    }
+    #scrollPic{
+      width:600px;
+      margin:0 auto;
+    }
+    .slidePic{
+      font-size: 0;
+      position: relative;
+      height: 300px;
+      width:450px;
+      margin:100px auto;
+      overflow: hidden;
+    }
+    .slidePic ul{
+      position: relative;
+      width:1800px;
+      /*left:-40px;*/
+      padding:0;
+    }
+    .slidePic ul li{
+      list-style: none;
+      float:left;
+    }
+    .slidePic ul li img{
+      width:450px;
+      height: 300px;
+    }
+    .nav span{
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+      display: inline-block;
+      position: relative;
+      top:-30px;
+      left:300px;
+      width:20px;
+      height: 20px;
+      border-radius: 10px;
+      border: 1px solid wheat;
+      background-color: whitesmoke;
+      margin-left: 5px;
+      opacity: 0.5;
+      cursor: pointer;
+      transition: opacity ease-in-out 0.4s;
+    }
+    .nav span:hover{
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+
+<div class="slidePic slide1">
+  <ul>
+    <li><img src="./images/chrome-big.jpg" alt="chrome"></li>
+    <li><img src="./images/safari-big.jpg" alt="safari"></li>
+    <li><img src="./images/opera-big.jpg" alt="opera"></li>
+    <li><img src="./images/firefox-big.jpg" alt="firefox"></li>
+  </ul>
+  <div class="nav">
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+    <span>4</span>
+  </div>
+</div>
+<div class="slidePic slide2">
+  <ul>
+    <li><img src="./images/chrome-big.jpg" alt="chrome"></li>
+    <li><img src="./images/safari-big.jpg" alt="safari"></li>
+    <li><img src="./images/opera-big.jpg" alt="opera"></li>
+    <li><img src="./images/firefox-big.jpg" alt="firefox"></li>
+  </ul>
+  <div class="nav">
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+    <span>4</span>
+  </div>
+</div>
+<script src="jquery.js"></script>
+<script src="jquery.slide.js"></script>
+<script>
+  $('.slide1').slideShow({
+      time:500
+  });
+
+</script>
+</body>
+</html>
