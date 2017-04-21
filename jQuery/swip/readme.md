@@ -1,7 +1,12 @@
 采用juqery 实现的一个简单的滚屏插件
 ====
-
-##html 布局：
+## 引用方式：
+```
+<script src="jquery.js"></script>
+<script src="jquery.slide.js"></script>
+```
+先引入jquery.js 再引入jquery.slide.js
+## html 布局：
 ```
 <div class="slidePic slide1">
   <ul>
@@ -19,7 +24,7 @@
 </div>
 ```
 
-##js调用
+## js调用
 ```
  $('.slide1').slideShow({
       time:500
