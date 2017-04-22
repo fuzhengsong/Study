@@ -74,6 +74,6 @@ For detailed explanation on how things work, consult the [docs for vue-loader](h
 ![enter description here][3]
 
 
-  [1]: ./images/%E4%B8%BB%E9%A1%B5_1.jpg "主页"
+  [1]: ./images/%E4%B8%BB%E9%A1%B5.jpg "主页"
   [2]: ./images/%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF.jpg "个人信息"
   [3]: ./images/%E6%96%87%E7%AB%A0.jpg "文章"
