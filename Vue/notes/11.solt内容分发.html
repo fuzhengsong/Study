@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>solt内容分发</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+
+<div id="app1">
+    <child>
+        <p :style="{color:red}">这是父元素中要分发的内容</p>
+    </child>
+    <brother>
+        <p slot="header" :style="{color:red}">我是父元素中slot=header的元素</p>
+        <p slot="footer" :style="{color:red}">我是父元素中slot=footer的元素</p>
+        <p>我是父元素中的元素</p>
+    </brother>
+</div>
+
+
+
+<template id="A">
+    <div>
+        单个slot:
+        -------------------------------------------------------------------
+        <h2>我是子组件的标题</h2>
+        <slot>替换父元素中在组件中的内容</slot>
+        <p>我是子组件中的内容</p>
+    </div>
+</template>
+
+<template id="B">
+    <div>
+        具名slot:
+        -------------------------------------------------------------------
+
+        <slot name="header">替换父元素中slot=header的元素</slot>
+        <p>我是子组件中的元素</p>
+        <slot></slot>
+        <slot name="footer">替换父元素中slot=footer的元素</slot>
+    </div>
+</template>
+<script>
+
+    var vn=new Vue({
+        el:"#app1",
+        data:{
+            red:'red'
+        },
+        components:{
+            'child':{
+                template:'#A'
+            },
+            'brother':{
+                template:"#B"
+            }
+        }
+    })
+</script>
+</body>
+</html>

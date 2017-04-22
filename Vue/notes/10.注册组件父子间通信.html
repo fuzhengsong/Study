@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>组件</title>
+    <script src="vue.js"></script>
+</head>
+<style>
+</style>
+<body>
+
+
+<div id="app1">
+    <my-component> </my-component>
+
+
+    <my-template my-message="hello"></my-template>
+
+
+    <simple-template></simple-template>
+</div>
+
+<div id="app2">
+    <p>按钮被点击了{{total}}次</p>
+    <!--父元素中 v-on 监听一个来自子元素的事件immiter 触发后调用btnTotal函数-->
+    <button-counter v-on:immiter="btnTotal"></button-counter>
+    <button-counter v-on:immiter="btnTotal"></button-counter>
+    <!--给组件添加原生事件添加后缀.native-->
+    <button-counter v-on:click.native="change"></button-counter>
+</div>
+
+<script>
+
+//    一个全局组件
+    Vue.component('my-component',{
+        template:'<div>A custom component!</div>'
+    });
+//    var data={count:0};
+    var vm1=new Vue({
+        el: "#app1",
+
+        components: {
+            'my-template': {
+                //父元素使用props和子元素单向通信
+                props: ['myMessage'],
+                template: '<div>A custom component!{{myMessage}}</div>'
+            },
+            'simple-template': {
+                template: '<button v-on:click="add">按钮{{count}}</button>',
+                //data必须是函数
+                data: function () {
+                    return {
+                        count: 0
+                    }
+                },
+                methods:{
+                    add:function () {
+                        this.count+=1
+                    }
+                }
+            }
+        }
+
+
+    });
+
+    var vm2=new Vue({
+        el:"#app2",
+        data:{
+            total:0
+        },
+        components:{
+            'button-counter':{
+                template:'<button v-on:click="add">Click{{count}}</button>',
+                data:function () {
+                    return {
+                        count:0
+                    }
+                },
+                methods:{
+                    add:function () {
+                        this.count+=1;
+                        //触发父元素中的immiter事件
+                        this.$emit('immiter')
+                    }
+                }
+            }
+        },
+        methods:{
+            btnTotal:function () {
+                this.total+=1
+            },
+            change:function () {
+                this.total+=1
+            }
+
+        }
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>组件</title>
+    <script src="vue.js"></script>
+</head>
+<style>
+</style>
+<body>
+<!--一个组件-->
+<custom-input v-model="price"></custom-input>
+
+<!--和该组件相同功能的写法-->
+1.对该组件绑定了一个value值到data中
+2.当该组件的子元素触发input事件时，传递来的数据被写入price中
+
+<custom-input v-bind:value="price" v-on:input="price=arguments[0]"></custom-input>
+
+ ---------------------------------------------------------------------------------
+
+<!--动态props-->
+子组件中的数据随父组件的改变而改变
+<div id="app1">
+    <input type="text" v-model="msg">
+    <child :my-message="msg"></child>
+
+    <!--v-bind语法可以传递的是引号中真实的数据类型，而字面量语法传递的则是字符串：-->
+    message中的1为字符串：
+    <child message="1"></child>
+
+    :message中的1为number类型：
+    <child :message="1"></child>
+
+</div>
+
+<script>
+    var vm1=new Vue({
+        el:"#app1",
+        data:{
+            msg:''
+        },
+        components:{
+            'child':{
+//                验证传入的父组件的数据类型
+                props:{'myMessage':String},
+                template:'<P>子组件中数据：{{myMessage}}</P>'
+            }
+        }
+    })
+
+</script>
+---------------------------------------------------------------------------------
+
+
+</body>
+</html>

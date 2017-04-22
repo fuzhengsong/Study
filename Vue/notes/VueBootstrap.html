@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueBootstrap</title>
+    <link rel="stylesheet" href="\fuzhengsong\bootstrap-3.3.7\dist\css\bootstrap.min.css">
+    <script src="\fuzhengsong\jquery\jquery.js"></script>
+    <script src="\fuzhengsong\bootstrap-3.3.7\dist\js\bootstrap.min.js"></script>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div class="container">
+    <form >
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" class="form-control" v-model="username" placeholder="输入姓名">
+        </div>
+        <div class="form-group">
+            <label for="age">age:</label>
+            <input type="text" id="age" class="form-control" v-model="age" placeholder="输入年龄">
+        </div>
+        <button type="button" class="btn btn-primary" v-on:click="insert">添加</button>
+        <button type="button" class="btn btn-danger" v-on:click="reset">重置</button>
+    </form>
+<hr>
+    <table class="table table-hover table-bordered">
+        <tr>
+            <th>序号</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>操作</th>
+        </tr>
+        <tr v-for="(value,index) in items">
+            <td>{{index+1}}</td>
+            <td>{{value.username}}</td>
+            <td>{{value.age}}</td>
+            <td><button type="button" class="btn btn-danger" data-target="#mymodal" data-toggle="modal"
+                v-on:click='nowIndex=index'>Delete</button></td>
+        </tr>
+        <tr >
+            <td colspan="4" v-if="!show" class="text-right"><button type="button" class="btn btn-danger" data-target="#mymodal" data-toggle="modal" v-on:click="nowIndex=-1">DeleteAll</button></td>
+        </tr>
+        <tr >
+            <td colspan="4" v-if="show">{{info_message}}</td>
+        </tr>
+    </table>
+    <div class="modal fade" id="mymodal">
+        <div class="modal-dialog  modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a data-dismiss="modal" class="close">&times;</a>
+                    <h3 class="modal-title">Message</h3>
+                </div>
+                <div class="modal-body">
+                    <p>{{delete_message}}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="deleteName">确认</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+var vm=new Vue({
+    el:".container",
+    data:{
+        username:'' ,
+        age:'',
+        items:[],
+        info_message:'数据列表中没有数据....',
+        nowIndex:''
+
+    },
+    computed:{
+        show:function () {
+            if(this.items.length>0) {
+                return false;
+            }else{
+                return true;
+            }
+        },
+        delete_message:function () {
+            if(this.nowIndex===-1){
+                return '确定要删除全部数据吗？'
+            }else{
+                return '确定要删除该条数据吗？'
+            }
+
+        }
+    },
+    methods:{
+        insert:function () {
+            if(!/\D/.test(this.age)){
+                this.items.push({'username': this.username,
+                    'age':this.age});
+            }
+            else{
+                alert('年龄需要为数值！')
+            }
+            this.reset();
+
+        },
+        reset:function () {
+          this.username='';
+          this.age=''
+        },
+        deleteName:function () {
+            if(this.nowIndex===-1){
+                this.items=[];
+            }else{
+                this.items.splice(this.nowIndex,1)
+            }
+
+        }
+    }
+//    components:{
+//            'delete':{
+//                template:'<td><button type="button" class="btn btn-danger">Delete</button></td>'
+//            }
+//    }
+})
+</script>
+</body>
+</html>
