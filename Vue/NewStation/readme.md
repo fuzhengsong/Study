@@ -64,25 +64,16 @@ For detailed explanation on how things work, consult the [docs for vue-loader](h
 							index.js
 							mutations.js
       
-	  
 ### 页面展示
-
 ![enter description here][1]
 
 
-  ![enter description here][2]
+![enter description here][2]
 
 
 ![enter description here][3]
 
 
-<<<<<<< HEAD
-  [1]: ./images/%E4%B8%BB%E9%A1%B5_2.jpg "主页"
-  [2]: ./images/%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF_1.jpg "个人信息"
-  [3]: ./images/%E6%96%87%E7%AB%A0_1.jpg "文章"
-  
-=======
-  [1]: ./img/%E4%B8%BB%E9%A1%B5_2.jpg "主页"
-  [2]: ./img/%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF_1.jpg "个人信息"
-  [3]: ./img/%E6%96%87%E7%AB%A0_1.jpg "文章"
->>>>>>> origin/master
+  [1]: ./images/%E4%B8%BB%E9%A1%B5_1.jpg "主页"
+  [2]: ./images/%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF.jpg "个人信息"
+  [3]: ./images/%E6%96%87%E7%AB%A0.jpg "文章"
