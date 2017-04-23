@@ -68,4 +68,4 @@ For detailed explanation on how things work, consult the [docs for vue-loader](h
 
 
   [1]: ./images/%E9%A1%B5%E9%9D%A2%E6%95%88%E6%9E%9C.jpg "页面效果"
-  [2]: ./images/%E9%A1%B5%E9%9D%A2%E6%95%88%E6%9E%9C2_1.jpg "页面效果2"
+  [2]: ./images/%E9%A1%B5%E9%9D%A2%E6%95%88%E6%9E%9C2.jpg "页面效果2"
