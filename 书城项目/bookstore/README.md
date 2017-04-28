@@ -92,17 +92,17 @@ vue+vue-router+webpack
   
   ![enter description here][2]
   
-  ![3]
-  
-  ![4]
+![enter description here][3]
+
+![enter description here][4]
   
   ### 书架
   
-  ![enter description here][3]
+  ![enter description here][5]
   
   ### 书籍详情
   
-  ![enter description here][4]
+  ![enter description here][6]
 
 ### 阅读器
 阅读器功能：
@@ -111,11 +111,13 @@ vue+vue-router+webpack
 
 
 
-![enter description here][5]
+![enter description here][7]
 
 
   [1]: ./images/home.png "home"
   [2]: ./images/male.png "male"
-  [3]: ./images/bookStore.png "bookStore"
-  [4]: ./images/%E4%B9%A6%E7%B1%8D%E8%AF%A6%E6%83%85%E9%A1%B5.png "书籍详情页"
-  [5]: ./images/reader.png "reader"
+  [3]: ./images/catagory.png "catagory"
+  [4]: ./images/rank.png "rank"
+  [5]: ./images/bookStore.png "bookStore"
+  [6]: ./images/%E4%B9%A6%E7%B1%8D%E8%AF%A6%E6%83%85%E9%A1%B5.png "书籍详情页"
+  [7]: ./images/reader.png "reader"
