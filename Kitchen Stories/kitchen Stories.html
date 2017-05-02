@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kitchen Stories</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/reset.css">
+</head>
+<body>
+<div class="container">
+    <div id="header">
+        <div class="header_c">
+            <div class="logo">
+                <a href="#" title="Kitchen Stories">
+                    <img src="./images/logo_kitchen_stories.svg" alt="Kitchen Stories">
+                </a>
+            </div>
+            <div class="nav">
+                <ul>
+                    <li><a href="">食谱</a></li>
+                    <li><a href="">类别</a></li>
+                    <li><a href="">小贴士</a></li>
+                    <li><a href="">视频</a></li>
+                </ul>
+            </div>
+            <div class="country">
+                <a href="javascript: void 0;" class="map" :style="{backgroundImage:c_image}" @click="isMap=!isMap"></a>
+                <i class="icon"></i>
+                <div class="c_list" v-show="isMap" @click="chooseCountry">
+                    <a href="javascript: void 0;"><img src="./images/icon_en.svg" alt="en"></a>
+                    <a href="javascript: void 0;"><img src="./images/icon_de.svg" alt="de"></a>
+                    <a href="javascript: void 0;"><img src="./images/icon_zh.svg" alt="zh"></a>
+                </div>
+            </div>
+            <div class="search">
+                <form >
+                    <input type="text" placeholder="查找">
+                </form>
+                <a><img src="./images/icon_quick_action_search.svg" alt="search"></a>
+            </div>
+            <div class="s_nav">
+                <div class="s_nav_icon" @click="showSmallNav">
+                    <a href="javascript: void 0;"><img src="./images/icon_burger.svg" alt="open" v-show="iss_nav_o">
+                        <img src="./images/icon_close.svg" alt="close" v-show="!iss_nav_o"></a>
+                </div>
+            </div>
+            <div class="s_n_list" v-show="!iss_nav_o">
+                <ul>
+                    <li><a href=""><h1>食谱</h1></a></li>
+                    <li><a href=""><h1>类别</h1></a></li>
+                    <li><a href="">亚洲风味</a></li>
+                    <li><a href="">工作日晚餐</a></li>
+                    <li><a href="">低于400卡</a></li>
+                    <li><a href="">低卡</a></li>
+                    <li><a href=""><h1>小贴士</h1></a></li>
+                    <li><a href="">用刀技巧</a></li>
+                    <li><a href="">日常烹饪</a></li>
+                    <li><a href="">烘焙方法</a></li>
+                    <li><a href="">自制</a></li>
+                    <li><a href=""><h1>视频</h1></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="contain_home" :style="{width:mywidth}">
+        <div id="contain">
+            <div class="part1">
+                <div class="title">
+                    <a href="https://kitchenstories.io/zh/gushi/yu-wo-men-fen-xiang-ni-de-shi-pu-ba">今日故事</a>
+                </div>
+                    <div class="img_c">
+                        <div class="img">
+                            <a href="https://kitchenstories.io/zh/gushi/yu-wo-men-fen-xiang-ni-de-shi-pu-ba"><img src="./images/image1.jpg" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <p>与我们分享你的食谱吧</p>
+                        <p>让厨房故事社区里的更多人能看到你的美食故事</p>
+                    </div>
+            </div>
+            <div class="part2">
+                <div class="title">
+                    <a href="#" ><h1>新食谱</h1></a>
+                    <a href="#" class="f_title">查看全部</a>
+                </div>
+                <div class="out_img_c">
+                    <div class="img_l">
+                        <ul :style="{left:imgListPos}">
+                            <li class="img_l_c" id="img_l_c">
+                                <div class="img_l_p">
+                                    <div class="img_l_h">
+                                        <a href=""><img src="./images/image2.jpg" alt=""></a>
+                                        <p class="img_l_title">冰冻玛格丽特</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="img_l_c">
+                                <div class="img_l_p">
+                                    <div class="img_l_h">
+                                        <a href=""><img src="./images/image3.jpg" alt=""></a>
+                                        <p class="img_l_title">浓郁柠檬蛋糕</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="img_l_c">
+                                <div class="img_l_p">
+                                    <div class="img_l_h">
+                                        <a href=""><img src="./images/image2.jpg" alt=""></a>
+                                        <p class="img_l_title">冰冻玛格丽特</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="img_l_c">
+                                <div class="img_l_p">
+                                    <div class="img_l_h">
+                                        <a href=""><img src="./images/image3.jpg" alt=""></a>
+                                        <p class="img_l_title">浓郁柠檬蛋糕</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="img_l_c">
+                                <div class="img_l_p">
+                                    <div class="img_l_h">
+                                        <a href=""><img src="./images/image2.jpg" alt=""></a>
+                                        <p class="img_l_title">冰冻玛格丽特</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="img_l_c">
+                                <div class="img_l_p">
+                                    <div class="img_l_h">
+                                        <a href=""><img src="./images/image3.jpg" alt=""></a>
+                                        <p class="img_l_title">浓郁柠檬蛋糕</p>
+                                    </div>
+                                </div>
+                            </li> <li class="img_l_c">
+                            <div class="img_l_p">
+                                <div class="img_l_h">
+                                    <a href=""><img src="./images/image2.jpg" alt=""></a>
+                                    <p class="img_l_title">冰冻玛格丽特</p>
+                                </div>
+                            </div>
+                        </li>
+                        </ul>
+                </div>
+                    <div class="arrow a_left" @click="slideLeft" v-show="istoLeft">
+                        <a href="javascript: void 0;"><img src="./images/icon_arrow_left.svg" alt=""></a>
+                    </div>
+                    <div class="arrow a_right"  @click="slideRight" v-show="istoRight">
+                        <a href="javascript: void 0;"><img src="./images/icon_arrow_right.svg" alt=""></a>
+                    </div>
+                </div>
+            </div>
+            <div class="part3">
+                <div class="title">
+                    <a href="#">春天大扫除</a>
+                </div>
+                <div class="video_c">
+                    <div class="video">
+                        <iframe src="https://player.vimeo.com/video/214675606?title=0&amp;color=ffcd02&amp;autoplay=0" frameborder="0" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" allowfullscreen="allowfullscreen">
+                        </iframe>
+                    </div>
+                </div>
+                <div class="footer">
+                    <p>与我们分享你的食谱吧</p>
+                    <p>让厨房故事社区里的更多人能看到你的美食故事</p>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <div class="footer_c">
+                <div class="row row1">
+                    <h2>联络</h2>
+                    <h3>关注我们</h3>
+                    <div class="con-icon">
+                        <ul>
+                            <li><a href="#"><img src="./images/icon_facebook.svg" alt="facebook"></a></li>
+                            <li><a href="#"><img src="./images/icon_twitter.svg" alt="twitter"></a></li>
+                            <li><a href="#"><img src="./images/icon_youtube.svg" alt="youtube"></a></li>
+                            <li><a href="#"><img src="./images/icon_weibo.svg" alt="weibo"></a></li>
+                            <li><a href="#"><img src="./images/icon_instagram.svg" alt="instagram"></a></li>
+                        </ul>
+                    </div>
+                    <h3 class="clearFloat">订阅精彩内容</h3>
+                    <form class="f_form">
+                        <input type="email" name="email" placeholder="输入邮箱地址">
+                        <button type="button" >提交</button>
+                    </form>
+                    <p>提交以上内容，即表示您同意我们的 <a href="#">隐私条款</a> </p>
+                    <h2>APP下载</h2>
+                    <div class="downLoad">
+                        <a href="#"><img src="./images/badge_appstore_zh.svg" alt="apple"></a>
+                        <a href="#"><img src="./images/badge_google-play_zh.png" alt="google"></a>
+                    </div>
+                </div>
+                <div class="row row2">
+                    <h2>加入我们</h2>
+
+                    <h3>工作机会 —— 我们需要你！</h3>
+                </div>
+                <div class="row row3">
+                    <h2>搜索</h2>
+                    <form >
+                        <input type="text" placeholder="查找" name="search">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="com_info">
+
+        </div>
+    </div>
+
+</div>
+<script src="./js/vue.js"></script>
+<script src="./js/index.js"></script>
+</body>
+</html>

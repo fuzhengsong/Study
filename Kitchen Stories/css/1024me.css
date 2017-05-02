@@ -1,0 +1,203 @@
+@media screen and (min-width: 64em){
+    #header .header_c .nav li a {
+        margin: 16px;
+    }
+    #header .search input{
+        display: block;
+    }
+    #header .search a{
+        display: none;
+    }
+    #contain .part2 .arrow.a_left{
+        left:-24px;
+    }
+    #contain .part2 .arrow.a_right{
+        right:-24px;
+    }
+}
+
+@media screen and (min-width: 46.875em){
+    #header .header_c .nav{
+        display: block;
+    }
+    #header .header_c .logo{
+        margin: 15px 1rem 1rem 0;
+        width: 225px;
+        float: left;
+    }
+    #header {
+        height:65px;
+    }
+    #header .country{
+        position: relative;
+        float:right;
+        margin-top:15px;
+        width:42px;
+        height: 34px;
+    }
+    #header .search{
+        float:right;
+        margin-top:23px;
+        margin-right: 16px;
+    }
+    #header .header_c .s_nav{
+        display: none;
+    }
+    #footer{
+        padding-top:40px;
+    }
+   #footer .row1, #footer .row2{
+       height: 360px;
+        /*display: inline-block;*/
+        width:38%;
+        float:left;
+        border-right: 1px solid black;
+    }
+   #footer .row3{
+        height: 360px;
+        /*display: inline-block;*/
+        width:20%;
+        float:left;
+    }
+    #footer .row3 input{
+        width:100%;
+    }
+}
+
+
+@media screen and (min-width: 46.875em) and (max-width:64em){
+
+    #header .header_c .nav ul li a{
+        margin: 16px 8px;
+    }
+    #header .search input{
+        display: none;
+    }
+    #header .search a{
+        display: block;
+    }
+    #contain .part2 .arrow{
+        border-radius: 5px;
+        background: rgba(255,255,255,0.8);
+    }
+    #contain .part2 .arrow.a_left{
+        left:20px;
+    }
+    #contain .part2 .arrow.a_right{
+        right:20px;
+    }
+}
+
+@media screen and (max-width: 46.875em){
+    #header {
+        height:50px;
+    }
+    #header .search input{
+        display: none;
+    }
+    #header .search a{
+        display: block;
+    }
+    #header .header_c .nav{
+        display: none;
+    }
+    #header .header_c .logo{
+        margin: 0 auto;
+        width: 202px;
+        margin-top: 12px;
+    }
+    #header .country{
+        display: none;
+    }
+    #header .search{
+        position: absolute;
+        right:10px;
+        top:15px;
+    }
+    #header .header_c .s_nav{
+        display: block;
+        position: absolute;
+        left:10px;
+        top:15px;
+    }
+    #header .header_c .s_n_list{
+        position: absolute;
+        top:50px;
+        left:0;
+        width:100%;
+        background: #fff;
+        height: calc(100vh - 50px);
+        overflow-x: hidden;
+    }
+    #header .header_c .s_n_list ul{
+       padding:30px 0 0 15px;
+    }
+    #header .header_c .s_n_list ul li{
+        line-height: 40px;
+    }
+    #header .header_c .s_n_list ul li a{
+        color: #adadad;
+        font-size: 16px;
+    }
+    #header .header_c .s_n_list ul li a h1{
+        font-size: 20px;
+        color:#8c939d;
+    }
+    #header .header_c .s_n_list ul li a:hover{
+        text-decoration: underline;
+        color:#000;
+    }
+    #header .header_c .s_n_list ul li a h1:hover{
+        color:#000;
+    }
+    #footer .row1{
+        padding:15px 0;
+        /*display: inline-block;*/
+        width:100%;
+        float:none;
+    }
+    #footer .row3, #footer .row2{
+        padding:15px 0;
+        border-top: 1px solid black;
+        /*display: inline-block;*/
+        width:100%;
+        float:none;
+    }
+    #footer .row3 input{
+        width:10%;
+    }
+}
+@media screen and (min-width:900px){
+    #contain .part2 .img_l{
+        position: relative;
+        margin-top:20px;
+        max-width:880px;
+        overflow:hidden ;
+        white-space: nowrap;
+    }
+    #contain .part2 .img_l .img_l_c{
+        box-sizing: border-box;
+        width:14.28%;
+        padding:0 10px;
+        display: inline-block;
+    }
+}
+@media screen and (max-width:900px){
+    #contain .part2 .img_l{
+        position: relative;
+        margin-top:20px;
+        max-width:880px;
+        overflow-y:hidden ;
+        overflow-x: scroll;
+        white-space: nowrap;
+    }
+    #contain .part2 .img_l .img_l_c{
+        box-sizing: border-box;
+        width:20%;
+        padding:0 10px;
+        display: inline-block;
+    }
+    #contain .part2 .arrow{
+        display: none;
+    }
+}
