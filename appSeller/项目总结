@@ -1,0 +1,77 @@
+1.在eslintrc.js 中配置eslint规范，如分号 空格等。
+
+2.在单独的css文件中或者less文件中，写公共类，这样调用比较方便
+
+3.less中的函数，变量 ，mixin在使用时引入，不能全局引入
+
+4.this.$nextTick(function(){}),在dom视图更新后执行其回调函数
+
+5.通过在组件或元素上添加属性ref，可以使用this.$refs来获得对应的dom元素
+
+6.方法中需要多个参数时，且需要访问原生dom，需要在html中传入$event参数
+
+7.可以通过vue.set来设定一个响应的数据
+
+8.z-index属性只有在设置了position为relative absoulte fixed 的元素中有用。一个元素的子元素无论设置z-index为任何
+值，都不可能被父元素覆盖，只会覆盖父元素，但是通过设置z-index大于0或者小于0，可以覆盖其他子元素或者被其他子元素覆盖
+
+9.border-radius 设置如：border-radius:5px 10px/15px 20px ,斜杠左右分别为水平半径和垂直半径，上 右 下 左的水平半径
+为5 10 5 10 ，垂直半径为15 20 15 20
+
+10.如果border-radius以百分号为单位表示，如 border-radius:0 100% 100% 0/50%,表示为：上 右 下 左水平半径为宽度的0%，
+100%，100%,0  垂直半径为高度的50%
+
+11.border-radius的大值特性和等比特性:单个圆角最大值为宽或者高中较小的值。如某元素宽为200px ,高为300px，那么其单个圆角最大半径可以为200px。进一步解释：border-radius:300px 0 0 0 => border-radius:300px 0 0 0 /300px 0 0 0,这个设置中，水平
+半径和垂直半径比例为1:1，而水平半径最大值为200px;所以最终解析为 border-radius:200px 0 0 0 。
+同样的相邻的2只角，其border-radius的值相加也不能超过宽或者高，如左上和右上的border-radius水平半径相加不能超过宽，右上和
+右下的垂直半径相加不能超过高，如果超过则按border-radius的比例计算实际应用的宽或高。还是这个元素中，如果border-radius设置
+为：300px 200px 0 0 那么左上角的水平半径为（300/500）*200=120px 右上则为（200/500） *200=80px。这里的垂直半径和水平
+半径为1:1，所以垂直半径也等比缩小为120px和80px
+
+
+12.line-height按百分比设置时基数为font-size的大小，font-size按比例设置时，基数为父元素font-size的大小。padding单位为
+百分比时，是按照父元素宽度来计算的，常用来做图片的等比例缩放如设置：
+父元素：{
+  position:relative;
+  width:100%;
+}
+子元素：
+{
+    position:relative;
+    width:100%;
+    padding-top:150%;    //为其父元素宽度的1.5倍，图片宽度等于其父元素宽度，所以图片比例就是1:1.5
+}
+其子元素中的图片:将图片定位到0,0位置，其宽高和父元素相同。子元素absoulte定位时，父元素的padding也计算到高度中。
+{
+    position:absoulte;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+}
+
+13.未知宽高元素垂直居中的2个方法：{
+                                  position:absoulte;
+                                  left:0;
+                                  right:0;
+                                  top:0;
+                                  bottom:0;
+                                  margin:auto
+                              }或者
+                              {
+                                  position:absoulte;
+                                  left:50%;
+                                  top:50%;
+                                  transform:translate(-50%,-50%)
+                              }
+
+                             translate的百分比是按照当前元素的宽高计算的，width/height是按照父元素的宽高计算的
+
+
+14.watch 方法：监控某个值的变化，当该值发生变化时，执行相应的操作，如rating组件中
+              computed 属性不同的是，它是通过其他值的改变而发生改变。
+
+15.Bscroll 包裹元素 定位为absoulte 需要设置top 和bottom 值，overflow：hidden 且要在dom加载完成后再实例化。
+
+16.match方法匹配时，如果正则设置了g属性，就会匹配字符串中所有的匹配项，生成数组，
+而且会忽略捕获组，如果没有g属性，则数组中就会有捕获组
